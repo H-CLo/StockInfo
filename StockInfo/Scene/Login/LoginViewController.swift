@@ -57,14 +57,14 @@ class LoginViewController: BaseViewController<BaseViewModel> {
 
     let savePasswordButton: UIButton = {
         let button = UIButton()
-        button.setTitle(LocalizeTool.string("訪客登入"), for: .normal)
+        button.setTitle(LocalizeTool.string("記住密碼"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         return button
     }()
 
+    // TODO: - Layout support
     let savePasswordSwitch: UISwitch = {
         let uiSwitch = UISwitch()
-
         return uiSwitch
     }()
 

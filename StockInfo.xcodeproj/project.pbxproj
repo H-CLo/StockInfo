@@ -28,6 +28,14 @@
 		07CC01A32C25152100AF9409 /* SColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A22C25152100AF9409 /* SColor.swift */; };
 		07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A52C25173F00AF9409 /* LocalizeTool.swift */; };
 		07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A82C251F4000AF9409 /* UIButton+.swift */; };
+		07CC01B12C25270900AF9409 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01AC2C25270900AF9409 /* HttpClient.swift */; };
+		07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01AD2C25270900AF9409 /* NetworkManager.swift */; };
+		07CC01B32C25270900AF9409 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01AE2C25270900AF9409 /* TargetType.swift */; };
+		07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01B42C25274100AF9409 /* LoginApi.swift */; };
+		07CC01B82C253B2E00AF9409 /* LoginReqModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01B72C253B2E00AF9409 /* LoginReqModel.swift */; };
+		07CC01BB2C253CF600AF9409 /* LoginApiUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */; };
+		07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BC2C253E3200AF9409 /* Data+.swift */; };
+		07CC01C02C25651100AF9409 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BF2C25651100AF9409 /* UserManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +79,14 @@
 		07CC01A22C25152100AF9409 /* SColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SColor.swift; sourceTree = "<group>"; };
 		07CC01A52C25173F00AF9409 /* LocalizeTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeTool.swift; sourceTree = "<group>"; };
 		07CC01A82C251F4000AF9409 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
+		07CC01AC2C25270900AF9409 /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		07CC01AD2C25270900AF9409 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		07CC01AE2C25270900AF9409 /* TargetType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
+		07CC01B42C25274100AF9409 /* LoginApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
+		07CC01B72C253B2E00AF9409 /* LoginReqModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReqModel.swift; sourceTree = "<group>"; };
+		07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiUnitTest.swift; sourceTree = "<group>"; };
+		07CC01BC2C253E3200AF9409 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		07CC01BF2C25651100AF9409 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +153,7 @@
 		07CC01662C24923000AF9409 /* StockInfoTests */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01B92C253CDC00AF9409 /* NetworkManager */,
 				07CC01672C24923000AF9409 /* StockInfoTests.swift */,
 			);
 			path = StockInfoTests;
@@ -175,6 +192,8 @@
 		07CC01882C24961600AF9409 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01BE2C25650200AF9409 /* UserManager */,
+				07CC01AF2C25270900AF9409 /* NetworkManager */,
 				07CC01A72C251F2B00AF9409 /* Extension */,
 				07CC01A42C25172200AF9409 /* Localize */,
 				07CC01A12C25150100AF9409 /* Color */,
@@ -185,6 +204,7 @@
 		07CC018D2C2499D500AF9409 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01B62C253B0300AF9409 /* Model */,
 				07CC019C2C24A0C000AF9409 /* View */,
 				07CC01902C249A3B00AF9409 /* LoginCoordinator.swift */,
 				07CC01922C249A7400AF9409 /* LoginViewController.swift */,
@@ -245,8 +265,52 @@
 			isa = PBXGroup;
 			children = (
 				07CC01A82C251F4000AF9409 /* UIButton+.swift */,
+				07CC01BC2C253E3200AF9409 /* Data+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		07CC01AB2C25270900AF9409 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01B42C25274100AF9409 /* LoginApi.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		07CC01AF2C25270900AF9409 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01AB2C25270900AF9409 /* Api */,
+				07CC01AC2C25270900AF9409 /* HttpClient.swift */,
+				07CC01AD2C25270900AF9409 /* NetworkManager.swift */,
+				07CC01AE2C25270900AF9409 /* TargetType.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		07CC01B62C253B0300AF9409 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01B72C253B2E00AF9409 /* LoginReqModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		07CC01B92C253CDC00AF9409 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		07CC01BE2C25650200AF9409 /* UserManager */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01BF2C25651100AF9409 /* UserManager.swift */,
+			);
+			path = UserManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,6 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC01B82C253B2E00AF9409 /* LoginReqModel.swift in Sources */,
 				07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */,
 				07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */,
 				07CC01A02C24B2DE00AF9409 /* LoginInputTextType.swift in Sources */,
@@ -395,11 +460,17 @@
 				07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */,
 				07CC01A32C25152100AF9409 /* SColor.swift in Sources */,
 				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
+				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
+				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
+				07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */,
+				07CC01B12C25270900AF9409 /* HttpClient.swift in Sources */,
+				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
 				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
+				07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */,
 				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC01BB2C253CF600AF9409 /* LoginApiUnitTest.swift in Sources */,
 				07CC01682C24923000AF9409 /* StockInfoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
