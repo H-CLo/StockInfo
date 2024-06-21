@@ -16,6 +16,18 @@
 		07CC01742C24923000AF9409 /* StockInfoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01732C24923000AF9409 /* StockInfoUITestsLaunchTests.swift */; };
 		07CC01822C24954E00AF9409 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 07CC01812C24954E00AF9409 /* Alamofire */; };
 		07CC01852C24955C00AF9409 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 07CC01842C24955C00AF9409 /* SnapKit */; };
+		07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01892C24995E00AF9409 /* Coordinator.swift */; };
+		07CC018C2C2499A300AF9409 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC018B2C2499A300AF9409 /* AppDependencies.swift */; };
+		07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01902C249A3B00AF9409 /* LoginCoordinator.swift */; };
+		07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01922C249A7400AF9409 /* LoginViewController.swift */; };
+		07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01942C249A8300AF9409 /* LoginViewModel.swift */; };
+		07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01982C249BF300AF9409 /* BaseViewController.swift */; };
+		07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC019A2C249BFE00AF9409 /* BaseViewModel.swift */; };
+		07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC019D2C24A0EB00AF9409 /* LoginInputTextView.swift */; };
+		07CC01A02C24B2DE00AF9409 /* LoginInputTextType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC019F2C24B2DE00AF9409 /* LoginInputTextType.swift */; };
+		07CC01A32C25152100AF9409 /* SColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A22C25152100AF9409 /* SColor.swift */; };
+		07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A52C25173F00AF9409 /* LocalizeTool.swift */; };
+		07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01A82C251F4000AF9409 /* UIButton+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +59,18 @@
 		07CC016D2C24923000AF9409 /* StockInfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockInfoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CC01712C24923000AF9409 /* StockInfoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfoUITests.swift; sourceTree = "<group>"; };
 		07CC01732C24923000AF9409 /* StockInfoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		07CC01892C24995E00AF9409 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		07CC018B2C2499A300AF9409 /* AppDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		07CC01902C249A3B00AF9409 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		07CC01922C249A7400AF9409 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		07CC01942C249A8300AF9409 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		07CC01982C249BF300AF9409 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		07CC019A2C249BFE00AF9409 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		07CC019D2C24A0EB00AF9409 /* LoginInputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextView.swift; sourceTree = "<group>"; };
+		07CC019F2C24B2DE00AF9409 /* LoginInputTextType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInputTextType.swift; sourceTree = "<group>"; };
+		07CC01A22C25152100AF9409 /* SColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SColor.swift; sourceTree = "<group>"; };
+		07CC01A52C25173F00AF9409 /* LocalizeTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeTool.swift; sourceTree = "<group>"; };
+		07CC01A82C251F4000AF9409 /* UIButton+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +125,8 @@
 			children = (
 				07CC01502C24922F00AF9409 /* AppDelegate.swift */,
 				07CC01522C24922F00AF9409 /* SceneDelegate.swift */,
+				07CC01892C24995E00AF9409 /* Coordinator.swift */,
+				07CC018B2C2499A300AF9409 /* AppDependencies.swift */,
 				07CC01882C24961600AF9409 /* Tools */,
 				07CC01872C24961000AF9409 /* Scene */,
 				07CC01862C24960300AF9409 /* Resource */,
@@ -138,6 +164,10 @@
 		07CC01872C24961000AF9409 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01972C249BE500AF9409 /* Base */,
+				07CC018D2C2499D500AF9409 /* Login */,
+				07CC018E2C2499FC00AF9409 /* StockList */,
+				07CC018F2C249A0400AF9409 /* StockPage */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -145,8 +175,78 @@
 		07CC01882C24961600AF9409 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01A72C251F2B00AF9409 /* Extension */,
+				07CC01A42C25172200AF9409 /* Localize */,
+				07CC01A12C25150100AF9409 /* Color */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		07CC018D2C2499D500AF9409 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				07CC019C2C24A0C000AF9409 /* View */,
+				07CC01902C249A3B00AF9409 /* LoginCoordinator.swift */,
+				07CC01922C249A7400AF9409 /* LoginViewController.swift */,
+				07CC01942C249A8300AF9409 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		07CC018E2C2499FC00AF9409 /* StockList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StockList;
+			sourceTree = "<group>";
+		};
+		07CC018F2C249A0400AF9409 /* StockPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = StockPage;
+			sourceTree = "<group>";
+		};
+		07CC01972C249BE500AF9409 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01982C249BF300AF9409 /* BaseViewController.swift */,
+				07CC019A2C249BFE00AF9409 /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		07CC019C2C24A0C000AF9409 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07CC019F2C24B2DE00AF9409 /* LoginInputTextType.swift */,
+				07CC019D2C24A0EB00AF9409 /* LoginInputTextView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		07CC01A12C25150100AF9409 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01A22C25152100AF9409 /* SColor.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		07CC01A42C25172200AF9409 /* Localize */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01A52C25173F00AF9409 /* LocalizeTool.swift */,
+			);
+			path = Localize;
+			sourceTree = "<group>";
+		};
+		07CC01A72C251F2B00AF9409 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01A82C251F4000AF9409 /* UIButton+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -287,8 +387,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */,
+				07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */,
+				07CC01A02C24B2DE00AF9409 /* LoginInputTextType.swift in Sources */,
+				07CC018C2C2499A300AF9409 /* AppDependencies.swift in Sources */,
 				07CC01512C24922F00AF9409 /* AppDelegate.swift in Sources */,
+				07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */,
+				07CC01A32C25152100AF9409 /* SColor.swift in Sources */,
+				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
+				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
+				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
+				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
+				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
+				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
