@@ -11,6 +11,12 @@ class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
 
     let viewModel: ViewModel
 
+    var isLoading: Bool = false {
+        didSet {
+            isLoading ? showSVProgressHUD() : dismissSVProgressHUD()
+        }
+    }
+
     init(viewModel: ViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)

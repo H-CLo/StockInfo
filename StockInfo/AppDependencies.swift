@@ -8,4 +8,12 @@
 import Foundation
 
 struct AppDependencies {
+    let apiManager: NetworkManager
+    let userManager: UserManager
+
+    init(apiManager: NetworkManager = NetworkManager(),
+         userManager: UserManager = UserManager()) {
+        self.apiManager = apiManager
+        self.userManager = userManager
+    }
 }

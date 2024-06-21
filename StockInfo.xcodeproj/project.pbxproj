@@ -36,6 +36,8 @@
 		07CC01BB2C253CF600AF9409 /* LoginApiUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */; };
 		07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BC2C253E3200AF9409 /* Data+.swift */; };
 		07CC01C02C25651100AF9409 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BF2C25651100AF9409 /* UserManager.swift */; };
+		07CC01C32C25766300AF9409 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 07CC01C22C25766300AF9409 /* SVProgressHUD */; };
+		07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,7 @@
 		07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginApiUnitTest.swift; sourceTree = "<group>"; };
 		07CC01BC2C253E3200AF9409 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		07CC01BF2C25651100AF9409 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC01C32C25766300AF9409 /* SVProgressHUD in Frameworks */,
 				07CC01822C24954E00AF9409 /* Alamofire in Frameworks */,
 				07CC01852C24955C00AF9409 /* SnapKit in Frameworks */,
 			);
@@ -192,6 +196,7 @@
 		07CC01882C24961600AF9409 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01C42C2576CD00AF9409 /* Protocols */,
 				07CC01BE2C25650200AF9409 /* UserManager */,
 				07CC01AF2C25270900AF9409 /* NetworkManager */,
 				07CC01A72C251F2B00AF9409 /* Extension */,
@@ -313,6 +318,14 @@
 			path = UserManager;
 			sourceTree = "<group>";
 		};
+		07CC01C42C2576CD00AF9409 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -332,6 +345,7 @@
 			packageProductDependencies = (
 				07CC01812C24954E00AF9409 /* Alamofire */,
 				07CC01842C24955C00AF9409 /* SnapKit */,
+				07CC01C22C25766300AF9409 /* SVProgressHUD */,
 			);
 			productName = StockInfo;
 			productReference = 07CC014D2C24922F00AF9409 /* StockInfo.app */;
@@ -408,6 +422,7 @@
 			packageReferences = (
 				07CC01802C24954E00AF9409 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				07CC01832C24955C00AF9409 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				07CC01C12C25766300AF9409 /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 			);
 			productRefGroup = 07CC014E2C24922F00AF9409 /* Products */;
 			projectDirPath = "";
@@ -467,6 +482,7 @@
 				07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */,
 				07CC01B12C25270900AF9409 /* HttpClient.swift in Sources */,
 				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
+				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
 				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
@@ -823,6 +839,14 @@
 				minimumVersion = 5.7.1;
 			};
 		};
+		07CC01C12C25766300AF9409 /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVProgressHUD/SVProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -835,6 +859,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 07CC01832C24955C00AF9409 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		07CC01C22C25766300AF9409 /* SVProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07CC01C12C25766300AF9409 /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
+			productName = SVProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,8 +7,20 @@
 
 import UIKit
 import SnapKit
+import Combine
 
-class LoginViewController: BaseViewController<BaseViewModel> {
+protocol LoginViewControllerDelegate: AnyObject {
+    func loginSuccess()
+}
+
+class LoginViewController: BaseViewController<LoginViewModel> {
+    // MARK: - Property
+
+    private var cancelBag = Set<AnyCancellable>()
+    weak var delegate: LoginViewControllerDelegate?
+
+    // MARK: - UI Component
+
     let backgroundImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "login_background"))
         imageView.contentMode = .scaleAspectFill
@@ -68,7 +80,7 @@ class LoginViewController: BaseViewController<BaseViewModel> {
         return uiSwitch
     }()
 
-    let loginButton: UIButton = {
+    lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle(LocalizeTool.string("登入"), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18)
@@ -77,19 +89,63 @@ class LoginViewController: BaseViewController<BaseViewModel> {
         button.setBackgroundColor(color: SColor.disableColor, forState: .disabled)
         button.setBackgroundColor(color: SColor.yellowColor, forState: .normal)
         button.isEnabled = false
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        // Do any additional setup after loading the view.
+        bind()
+    }
+
+    @objc
+    func loginButtonTapped() {
+        let account = accountTextField.textField.text ?? ""
+        let password = passwordTextField.textField.text ?? ""
+        viewModel.login(account: account, password: password)
+    }
+}
+
+// MARK: - Bind
+
+private extension LoginViewController {
+    func bind() {
+        // UI
+        accountTextField.textField.addTarget(self, action: #selector(textFieldTextDidChanged), for: .editingChanged)
+        passwordTextField.textField.addTarget(self, action: #selector(textFieldTextDidChanged), for: .editingChanged)
+
+        // ViewModel
+        viewModel.isLoading.sink { isLoading in
+            self.isLoading = isLoading
+        }.store(in: &cancelBag)
+
+        viewModel.loginError.sink {[weak self] error in
+            self?.showLoginFail(error: error)
+        }.store(in: &cancelBag)
+    }
+
+    @objc
+    func textFieldTextDidChanged(_ textField: UITextField) {
+        let isEnable1 = accountTextField.textField.text?.count ?? 0 > 0
+        let isEnable2 = passwordTextField.textField.text?.count ?? 0 > 0
+        loginButton.isEnabled = isEnable1 && isEnable2
+    }
+
+    // TODO: - Reuse
+    func showLoginFail(error: Error) {
+        let alert = UIAlertController(title: LocalizeTool.string("登入失敗"), message: error.localizedDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: "好", style: .default) { _ in
+            alert.dismiss(animated: true)
+        }
+        alert.addAction(action)
+        self.present(alert, animated: true)
     }
 }
 
 // MARK: - UI
 
-extension LoginViewController {
+private extension LoginViewController {
     func setupUI() {
         view.addSubview(backgroundImageView)
         view.addSubview(accountTextField)
