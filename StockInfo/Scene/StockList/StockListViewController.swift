@@ -44,6 +44,28 @@ class StockListViewController: BaseViewController<StockListViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bind()
+        viewModel.fetchStockBaseInfo()
+    }
+}
+
+// MARK: - Bind
+
+extension StockListViewController {
+    func bind() {
+        // ViewModel
+        viewModel.isLoading.sink { isLoading in
+            self.isLoading = isLoading
+        }.store(in: &cancelBags)
+
+        viewModel.watchListsDidSet.sink { [weak self] models in
+            let items = models.map { PageItemModel(index: $0.order, title: $0.display_name) }
+            self?.pageListView.config(items: items)
+        }.store(in: &cancelBags)
+
+        viewModel.watchListStocksDidSet.sink { [weak self] in
+            self?.tableView.reloadData()
+        }.store(in: &cancelBags)
     }
 }
 
@@ -91,22 +113,27 @@ extension StockListViewController {
 // MARK: - PageListViewDelegate
 
 extension StockListViewController: PageListViewDelegate {
-    func pageDidSelected(item _: any PageItemProtocol) {}
+    func pageDidSelected(item: PageItemProtocol) {
+        viewModel.changePageItem(item)
+    }
 }
 
 // MARK: - UITableViewDataSource
 
 extension StockListViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in _: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return viewModel.getSequenceCount()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StockListTableViewCell.self), for: indexPath) as? StockListTableViewCell else { return UITableViewCell() }
+        if let info = viewModel.getSequenceItem(index: indexPath.row) {
+            cell.configCell(info: info)
+        }
         return cell
     }
 }
@@ -114,11 +141,11 @@ extension StockListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension StockListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
         // TODO: - Show stock page view
     }
 
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
         return 76
     }
 }

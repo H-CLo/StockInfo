@@ -60,6 +60,31 @@ class StockListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = ""
+        priceLabel.text = ""
+        priceLabel.textColor = .white
+        upDownLabel.text = ""
+        upDownLabel.textColor = .white
+    }
+
+    func configCell(info: StockListInfo) {
+        // Name label
+        let nameAttr = NSMutableAttributedString(string: info.baseInfo.commodity_name,
+                                                 attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16), .foregroundColor: UIColor.white])
+        nameAttr.append(NSAttributedString(string: "\n\(info.baseInfo.commodity_id)",
+                                           attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), .foregroundColor: SColor.grayColor1]))
+        nameLabel.attributedText = nameAttr
+
+        // Price
+        priceLabel.text = info.stock.currentPrice
+        priceLabel.textColor = info.upDown.color
+
+        upDownLabel.text = "\(info.upDown.triangleSymbol) \(info.stock.diff)\n\(info.stock.diffRatio)"
+        upDownLabel.textColor = info.upDown.color
+    }
 }
 
 private extension StockListTableViewCell {

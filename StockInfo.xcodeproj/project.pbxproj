@@ -56,6 +56,9 @@
 		07CC01EE2C2728D600AF9409 /* StockApiUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01ED2C2728D600AF9409 /* StockApiUnitTest.swift */; };
 		07CC01F02C272D7800AF9409 /* WatchListAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01EF2C272D7800AF9409 /* WatchListAll.swift */; };
 		07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01F12C272ED500AF9409 /* WatchListStocks.swift */; };
+		07CC01F62C27527700AF9409 /* StockListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01F52C27527700AF9409 /* StockListInfo.swift */; };
+		07CC01FA2C275C2F00AF9409 /* StockUpDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01F92C275C2F00AF9409 /* StockUpDown.swift */; };
+		07CC01FC2C275D5400AF9409 /* TradeMarket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01FB2C275D5400AF9409 /* TradeMarket.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +129,9 @@
 		07CC01ED2C2728D600AF9409 /* StockApiUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockApiUnitTest.swift; sourceTree = "<group>"; };
 		07CC01EF2C272D7800AF9409 /* WatchListAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAll.swift; sourceTree = "<group>"; };
 		07CC01F12C272ED500AF9409 /* WatchListStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListStocks.swift; sourceTree = "<group>"; };
+		07CC01F52C27527700AF9409 /* StockListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListInfo.swift; sourceTree = "<group>"; };
+		07CC01F92C275C2F00AF9409 /* StockUpDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockUpDown.swift; sourceTree = "<group>"; };
+		07CC01FB2C275D5400AF9409 /* TradeMarket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradeMarket.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,10 +185,8 @@
 		07CC014F2C24922F00AF9409 /* StockInfo */ = {
 			isa = PBXGroup;
 			children = (
-				07CC01502C24922F00AF9409 /* AppDelegate.swift */,
-				07CC01522C24922F00AF9409 /* SceneDelegate.swift */,
-				07CC01892C24995E00AF9409 /* Coordinator.swift */,
-				07CC018B2C2499A300AF9409 /* AppDependencies.swift */,
+				07CC01F72C275C0600AF9409 /* AppDelegate */,
+				07CC01F82C275C1100AF9409 /* StockDefine */,
 				07CC01882C24961600AF9409 /* Tools */,
 				07CC01872C24961000AF9409 /* Scene */,
 				07CC01862C24960300AF9409 /* Resource */,
@@ -416,6 +420,7 @@
 				07CC01EB2C27288600AF9409 /* StockBaseInfo.swift */,
 				07CC01EF2C272D7800AF9409 /* WatchListAll.swift */,
 				07CC01F12C272ED500AF9409 /* WatchListStocks.swift */,
+				07CC01F52C27527700AF9409 /* StockListInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,6 +431,26 @@
 				07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		07CC01F72C275C0600AF9409 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01502C24922F00AF9409 /* AppDelegate.swift */,
+				07CC01522C24922F00AF9409 /* SceneDelegate.swift */,
+				07CC01892C24995E00AF9409 /* Coordinator.swift */,
+				07CC018B2C2499A300AF9409 /* AppDependencies.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		07CC01F82C275C1100AF9409 /* StockDefine */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01F92C275C2F00AF9409 /* StockUpDown.swift */,
+				07CC01FB2C275D5400AF9409 /* TradeMarket.swift */,
+			);
+			path = StockDefine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -591,6 +616,7 @@
 				07CC01E22C26F94200AF9409 /* SortType.swift in Sources */,
 				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,
 				07CC01EC2C27288600AF9409 /* StockBaseInfo.swift in Sources */,
+				07CC01FA2C275C2F00AF9409 /* StockUpDown.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
 				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
@@ -602,10 +628,12 @@
 				07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */,
 				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
+				07CC01F62C27527700AF9409 /* StockListInfo.swift in Sources */,
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
 				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
 				07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */,
 				07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */,
+				07CC01FC2C275D5400AF9409 /* TradeMarket.swift in Sources */,
 				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

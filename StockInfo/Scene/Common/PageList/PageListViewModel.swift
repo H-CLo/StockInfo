@@ -12,6 +12,11 @@ protocol PageItemProtocol {
     var title: String { get }
 }
 
+struct PageItemModel: PageItemProtocol {
+    var index: Int
+    var title: String
+}
+
 final class PageListViewModel {
     var pageItems = [PageItemProtocol]()
 
