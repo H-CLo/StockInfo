@@ -49,11 +49,12 @@ class HttpClient: HttpClientProtocol {
     private static func request<T: TargetType, Body: Encodable, Response: Decodable>(target: T, body: Body, completion: @escaping (Result<Response, Error>) -> Void) {
         let urlStr = target.baseURL + target.path
         let method = HTTPMethod(rawValue: target.method.rawValue)
+        let body = (target.method == .post) ? body : nil
         let headers = HTTPHeaders(target.headers)
 
         debugPrint("URL = \(urlStr)")
         debugPrint("Method = \(method)")
-        debugPrint("Body = \(body)")
+        debugPrint("Body = \(String(describing: body))")
         debugPrint("Headers = \(headers)")
 
         AF.request(urlStr,

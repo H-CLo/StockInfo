@@ -27,6 +27,9 @@ final class LoginApiUnitTest: XCTestCase {
             switch result {
             case .success(let model):
                 XCTAssert(model.access.count > 0)
+                let access = model.access
+                debugPrint("access = \(access)")
+                UserManager().save(accessToken: model.access)
             case .failure(let error):
                 XCTFail(error.localizedDescription)
             }

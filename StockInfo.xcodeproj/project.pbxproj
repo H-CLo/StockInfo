@@ -51,6 +51,11 @@
 		07CC01E22C26F94200AF9409 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E12C26F94200AF9409 /* SortType.swift */; };
 		07CC01E52C26FCFA00AF9409 /* StockListColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */; };
 		07CC01E82C27047B00AF9409 /* StockListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */; };
+		07CC01EA2C27248E00AF9409 /* StockApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E92C27248E00AF9409 /* StockApi.swift */; };
+		07CC01EC2C27288600AF9409 /* StockBaseInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01EB2C27288600AF9409 /* StockBaseInfo.swift */; };
+		07CC01EE2C2728D600AF9409 /* StockApiUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01ED2C2728D600AF9409 /* StockApiUnitTest.swift */; };
+		07CC01F02C272D7800AF9409 /* WatchListAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01EF2C272D7800AF9409 /* WatchListAll.swift */; };
+		07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01F12C272ED500AF9409 /* WatchListStocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +121,11 @@
 		07CC01E12C26F94200AF9409 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListColumnType.swift; sourceTree = "<group>"; };
 		07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewCell.swift; sourceTree = "<group>"; };
+		07CC01E92C27248E00AF9409 /* StockApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockApi.swift; sourceTree = "<group>"; };
+		07CC01EB2C27288600AF9409 /* StockBaseInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockBaseInfo.swift; sourceTree = "<group>"; };
+		07CC01ED2C2728D600AF9409 /* StockApiUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockApiUnitTest.swift; sourceTree = "<group>"; };
+		07CC01EF2C272D7800AF9409 /* WatchListAll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListAll.swift; sourceTree = "<group>"; };
+		07CC01F12C272ED500AF9409 /* WatchListStocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListStocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				07CC01B42C25274100AF9409 /* LoginApi.swift */,
+				07CC01E92C27248E00AF9409 /* StockApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -340,6 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				07CC01BA2C253CF600AF9409 /* LoginApiUnitTest.swift */,
+				07CC01ED2C2728D600AF9409 /* StockApiUnitTest.swift */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -401,6 +413,9 @@
 			isa = PBXGroup;
 			children = (
 				07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */,
+				07CC01EB2C27288600AF9409 /* StockBaseInfo.swift */,
+				07CC01EF2C272D7800AF9409 /* WatchListAll.swift */,
+				07CC01F12C272ED500AF9409 /* WatchListStocks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -556,6 +571,7 @@
 				07CC01B82C253B2E00AF9409 /* LoginReqModel.swift in Sources */,
 				07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */,
 				07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */,
+				07CC01EA2C27248E00AF9409 /* StockApi.swift in Sources */,
 				07CC01A02C24B2DE00AF9409 /* LoginInputTextType.swift in Sources */,
 				07CC01E02C26F83D00AF9409 /* SortableView.swift in Sources */,
 				07CC018C2C2499A300AF9409 /* AppDependencies.swift in Sources */,
@@ -566,6 +582,7 @@
 				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
 				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
 				07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */,
+				07CC01F02C272D7800AF9409 /* WatchListAll.swift in Sources */,
 				07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */,
 				07CC01E82C27047B00AF9409 /* StockListTableViewCell.swift in Sources */,
 				07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */,
@@ -573,6 +590,7 @@
 				07CC01D52C26DC5700AF9409 /* PageListView.swift in Sources */,
 				07CC01E22C26F94200AF9409 /* SortType.swift in Sources */,
 				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,
+				07CC01EC2C27288600AF9409 /* StockBaseInfo.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
 				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
@@ -587,6 +605,7 @@
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
 				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
 				07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */,
+				07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */,
 				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -595,6 +614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CC01EE2C2728D600AF9409 /* StockApiUnitTest.swift in Sources */,
 				07CC01BB2C253CF600AF9409 /* LoginApiUnitTest.swift in Sources */,
 				07CC01682C24923000AF9409 /* StockInfoTests.swift in Sources */,
 			);
