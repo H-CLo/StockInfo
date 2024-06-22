@@ -43,6 +43,10 @@
 		07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */; };
 		07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01CE2C258A1900AF9409 /* StockListViewController.swift */; };
 		07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */; };
+		07CC01D52C26DC5700AF9409 /* PageListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01D42C26DC5700AF9409 /* PageListView.swift */; };
+		07CC01D92C26DDFD00AF9409 /* PageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01D82C26DDFD00AF9409 /* PageListViewModel.swift */; };
+		07CC01DB2C26DED700AF9409 /* Collection+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01DA2C26DED700AF9409 /* Collection+.swift */; };
+		07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01DC2C26DF7300AF9409 /* PageListCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +104,10 @@
 		07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListCoordinator.swift; sourceTree = "<group>"; };
 		07CC01CE2C258A1900AF9409 /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
 		07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
+		07CC01D42C26DC5700AF9409 /* PageListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListView.swift; sourceTree = "<group>"; };
+		07CC01D82C26DDFD00AF9409 /* PageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListViewModel.swift; sourceTree = "<group>"; };
+		07CC01DA2C26DED700AF9409 /* Collection+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+.swift"; sourceTree = "<group>"; };
+		07CC01DC2C26DF7300AF9409 /* PageListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageListCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				07CC01972C249BE500AF9409 /* Base */,
+				07CC01D22C26DBED00AF9409 /* Common */,
 				07CC01C72C25786100AF9409 /* Home */,
 				07CC018D2C2499D500AF9409 /* Login */,
 				07CC018E2C2499FC00AF9409 /* StockList */,
@@ -285,6 +294,7 @@
 			children = (
 				07CC01A82C251F4000AF9409 /* UIButton+.swift */,
 				07CC01BC2C253E3200AF9409 /* Data+.swift */,
+				07CC01DA2C26DED700AF9409 /* Collection+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -347,6 +357,24 @@
 				07CC01CA2C2578C900AF9409 /* HomeTabBarController.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		07CC01D22C26DBED00AF9409 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01D32C26DC0A00AF9409 /* PageList */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		07CC01D32C26DC0A00AF9409 /* PageList */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01D42C26DC5700AF9409 /* PageListView.swift */,
+				07CC01D82C26DDFD00AF9409 /* PageListViewModel.swift */,
+				07CC01DC2C26DF7300AF9409 /* PageListCollectionViewCell.swift */,
+			);
+			path = PageList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -502,10 +530,14 @@
 				07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */,
 				07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */,
 				07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */,
+				07CC01DB2C26DED700AF9409 /* Collection+.swift in Sources */,
+				07CC01D52C26DC5700AF9409 /* PageListView.swift in Sources */,
 				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
+				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
 				07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */,
+				07CC01D92C26DDFD00AF9409 /* PageListViewModel.swift in Sources */,
 				07CC01CB2C2578C900AF9409 /* HomeTabBarController.swift in Sources */,
 				07CC01B12C25270900AF9409 /* HttpClient.swift in Sources */,
 				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
