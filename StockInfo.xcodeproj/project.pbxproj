@@ -50,6 +50,7 @@
 		07CC01E02C26F83D00AF9409 /* SortableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01DF2C26F83D00AF9409 /* SortableView.swift */; };
 		07CC01E22C26F94200AF9409 /* SortType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E12C26F94200AF9409 /* SortType.swift */; };
 		07CC01E52C26FCFA00AF9409 /* StockListColumnType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */; };
+		07CC01E82C27047B00AF9409 /* StockListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +115,7 @@
 		07CC01DF2C26F83D00AF9409 /* SortableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortableView.swift; sourceTree = "<group>"; };
 		07CC01E12C26F94200AF9409 /* SortType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortType.swift; sourceTree = "<group>"; };
 		07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListColumnType.swift; sourceTree = "<group>"; };
+		07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				07CC01E32C26FCE500AF9409 /* Model */,
+				07CC01E62C27045D00AF9409 /* View */,
 				07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */,
 				07CC01CE2C258A1900AF9409 /* StockListViewController.swift */,
 				07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */,
@@ -400,6 +403,14 @@
 				07CC01E42C26FCFA00AF9409 /* StockListColumnType.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		07CC01E62C27045D00AF9409 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01E72C27047B00AF9409 /* StockListTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,6 +567,7 @@
 				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
 				07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */,
 				07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */,
+				07CC01E82C27047B00AF9409 /* StockListTableViewCell.swift in Sources */,
 				07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */,
 				07CC01DB2C26DED700AF9409 /* Collection+.swift in Sources */,
 				07CC01D52C26DC5700AF9409 /* PageListView.swift in Sources */,
