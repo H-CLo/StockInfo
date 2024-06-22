@@ -49,16 +49,12 @@ class AppCoordinator: Coordinator {
 
     override func start() {
         // Setup RootViewController
-        let rootCoodinator = makeCoordinator()
-        window?.rootViewController = rootCoodinator.0
-        add(child: rootCoodinator.1)
-        rootCoodinator.1.start()
-    }
-}
-
-private extension AppCoordinator {
-    func makeCoordinator() -> (UINavigationController, coordinator: Coordinating) {
-        let coordinator = LoginCoordinator(navigationController: navigationController, appDependencies: appDependencies)
-        return (navigationController, coordinator)
+        let tabBarController = HomeTabBarController()
+        let rootCoodinator = HomeCoordinator(homeTabBarController: tabBarController,
+                                             navigationController: navigationController,
+                                             appDependencies: appDependencies)
+        window?.rootViewController = tabBarController
+        add(child: rootCoodinator)
+        rootCoodinator.start()
     }
 }

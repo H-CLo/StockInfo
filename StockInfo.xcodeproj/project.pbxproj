@@ -38,6 +38,11 @@
 		07CC01C02C25651100AF9409 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01BF2C25651100AF9409 /* UserManager.swift */; };
 		07CC01C32C25766300AF9409 /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 07CC01C22C25766300AF9409 /* SVProgressHUD */; };
 		07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */; };
+		07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01C82C25788B00AF9409 /* HomeCoordinator.swift */; };
+		07CC01CB2C2578C900AF9409 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01CA2C2578C900AF9409 /* HomeTabBarController.swift */; };
+		07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */; };
+		07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01CE2C258A1900AF9409 /* StockListViewController.swift */; };
+		07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +95,11 @@
 		07CC01BC2C253E3200AF9409 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		07CC01BF2C25651100AF9409 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressHUDable.swift; sourceTree = "<group>"; };
+		07CC01C82C25788B00AF9409 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		07CC01CA2C2578C900AF9409 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
+		07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListCoordinator.swift; sourceTree = "<group>"; };
+		07CC01CE2C258A1900AF9409 /* StockListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewController.swift; sourceTree = "<group>"; };
+		07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				07CC01972C249BE500AF9409 /* Base */,
+				07CC01C72C25786100AF9409 /* Home */,
 				07CC018D2C2499D500AF9409 /* Login */,
 				07CC018E2C2499FC00AF9409 /* StockList */,
 				07CC018F2C249A0400AF9409 /* StockPage */,
@@ -221,6 +232,9 @@
 		07CC018E2C2499FC00AF9409 /* StockList */ = {
 			isa = PBXGroup;
 			children = (
+				07CC01CC2C2589EF00AF9409 /* StockListCoordinator.swift */,
+				07CC01CE2C258A1900AF9409 /* StockListViewController.swift */,
+				07CC01D02C258A2E00AF9409 /* StockListViewModel.swift */,
 			);
 			path = StockList;
 			sourceTree = "<group>";
@@ -324,6 +338,15 @@
 				07CC01C52C2576E400AF9409 /* ProgressHUDable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		07CC01C72C25786100AF9409 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				07CC01C82C25788B00AF9409 /* HomeCoordinator.swift */,
+				07CC01CA2C2578C900AF9409 /* HomeTabBarController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,12 +499,17 @@
 				07CC01A32C25152100AF9409 /* SColor.swift in Sources */,
 				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
 				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
+				07CC01D12C258A2E00AF9409 /* StockListViewModel.swift in Sources */,
+				07CC01CD2C2589EF00AF9409 /* StockListCoordinator.swift in Sources */,
+				07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */,
 				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
 				07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */,
+				07CC01CB2C2578C900AF9409 /* HomeTabBarController.swift in Sources */,
 				07CC01B12C25270900AF9409 /* HttpClient.swift in Sources */,
 				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
+				07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */,
 				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
