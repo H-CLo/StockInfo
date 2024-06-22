@@ -42,4 +42,5 @@ extension SColor {
     static let grayColor2 = SColor.color("#7A7A7A")
     static let backgroundColor = SColor.color("#212121")
     static let backgroundColor1 = SColor.color("#141414")
+    static let backgroundColor2 = SColor.color("#2F2F2F")
 }
