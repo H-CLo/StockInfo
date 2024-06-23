@@ -7,10 +7,19 @@
 
 import Foundation
 
-class StockListCoordinator: Coordinator {
-    
+final class StockListCoordinator: Coordinator {
+
     override func start() {
         let stockListViewController = StockListViewController(viewModel: StockListViewModel(appDependencies: appDependencies))
+        stockListViewController.delegate = self
         navigationController.setViewControllers([stockListViewController], animated: false)
+    }
+}
+
+extension StockListCoordinator: StockListViewControllerDelegate {
+    func showStockPage(id: String) {
+        let coordinator = StockPageCoordinator(navigationController: navigationController, appDependencies: appDependencies)
+        coordinator.stockID = id
+        coordinator.start()
     }
 }

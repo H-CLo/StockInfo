@@ -9,10 +9,15 @@ import Combine
 import SnapKit
 import UIKit
 
+protocol StockListViewControllerDelegate: AnyObject {
+    func showStockPage(id: String)
+}
+
 class StockListViewController: BaseViewController<StockListViewModel> {
     // MARK: - Property
 
     var cancelBags = Set<AnyCancellable>()
+    weak var delegate: StockListViewControllerDelegate?
 
     // MARK: UI Component
 
@@ -141,8 +146,9 @@ extension StockListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension StockListViewController: UITableViewDelegate {
-    func tableView(_: UITableView, didSelectRowAt _: IndexPath) {
-        // TODO: - Show stock page view
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let info = viewModel.getSequenceItem(index: indexPath.row) else { return }
+        delegate?.showStockPage(id: info.baseInfo.commodity_id)
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {
