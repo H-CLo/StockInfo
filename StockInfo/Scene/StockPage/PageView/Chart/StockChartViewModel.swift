@@ -26,6 +26,29 @@ final class StockChartViewModel: BaseViewModel {
 }
 
 extension StockChartViewModel {
+    /// 計算均價與取得漲跌
+    func calculateAverage(type: StockChartLineType, index: Int) -> (String, Bool) {
+        let days = type.days
+
+        var startIndex = index - days + 1
+        var totalCount: Double = 0
+        var totalValue: Double = 0
+        while startIndex <= index {
+            if startIndex >= 0 {
+                totalCount += 1
+                totalValue += chartModel.data[startIndex].close
+            }
+            startIndex += 1
+        }
+
+        let avg = totalValue / totalCount
+        let avgStr = avg.interceptDecimal()
+        let upDown = chartModel.data[index].close >= avg
+        return (avgStr, upDown)
+    }
+}
+
+extension StockChartViewModel {
     func fetchStockChart() {
         apiManager.fetchStockChart(stockID: id) { [weak self] result in
             switch result {

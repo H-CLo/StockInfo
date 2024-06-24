@@ -72,6 +72,11 @@
 		07CC021D2C296A6E00AF9409 /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */; };
 		07CC021F2C296A7900AF9409 /* StockChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */; };
 		07CC02232C296B4800AF9409 /* StockChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC02222C296B4800AF9409 /* StockChartModel.swift */; };
+		07DB41222C29D38F00BF4BAE /* StockChartDateType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41212C29D38F00BF4BAE /* StockChartDateType.swift */; };
+		07DB41252C29DC7500BF4BAE /* AdaptableSizeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41242C29DC7500BF4BAE /* AdaptableSizeButton.swift */; };
+		07DB41272C29DCEB00BF4BAE /* StockChartLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41262C29DCEB00BF4BAE /* StockChartLineType.swift */; };
+		07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */; };
+		07DB412D2C29F3DF00BF4BAE /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412C2C29F3DF00BF4BAE /* Double+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +162,11 @@
 		07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
 		07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewModel.swift; sourceTree = "<group>"; };
 		07CC02222C296B4800AF9409 /* StockChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartModel.swift; sourceTree = "<group>"; };
+		07DB41212C29D38F00BF4BAE /* StockChartDateType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartDateType.swift; sourceTree = "<group>"; };
+		07DB41242C29DC7500BF4BAE /* AdaptableSizeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptableSizeButton.swift; sourceTree = "<group>"; };
+		07DB41262C29DCEB00BF4BAE /* StockChartLineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartLineType.swift; sourceTree = "<group>"; };
+		07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeAttr.swift; sourceTree = "<group>"; };
+		07DB412C2C29F3DF00BF4BAE /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -351,6 +361,7 @@
 				07CC01BC2C253E3200AF9409 /* Data+.swift */,
 				07CC01DA2C26DED700AF9409 /* Collection+.swift */,
 				07CC02172C2866C000AF9409 /* String+.swift */,
+				07DB412C2C29F3DF00BF4BAE /* Double+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -420,6 +431,7 @@
 		07CC01D22C26DBED00AF9409 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41242C29DC7500BF4BAE /* AdaptableSizeButton.swift */,
 				07CC01DE2C26F81E00AF9409 /* SortView */,
 				07CC01D32C26DC0A00AF9409 /* PageList */,
 			);
@@ -516,6 +528,7 @@
 		07CC021B2C296A4300AF9409 /* Chart */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41232C29DBF900BF4BAE /* View */,
 				07CC02212C296B3600AF9409 /* Model */,
 				07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */,
 				07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */,
@@ -535,8 +548,18 @@
 			isa = PBXGroup;
 			children = (
 				07CC02222C296B4800AF9409 /* StockChartModel.swift */,
+				07DB41212C29D38F00BF4BAE /* StockChartDateType.swift */,
+				07DB41262C29DCEB00BF4BAE /* StockChartLineType.swift */,
+				07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		07DB41232C29DBF900BF4BAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -685,6 +708,8 @@
 				07CC01B82C253B2E00AF9409 /* LoginReqModel.swift in Sources */,
 				07CC020E2C28031900AF9409 /* StockTrendViewController.swift in Sources */,
 				07CC02232C296B4800AF9409 /* StockChartModel.swift in Sources */,
+				07DB41272C29DCEB00BF4BAE /* StockChartLineType.swift in Sources */,
+				07DB41222C29D38F00BF4BAE /* StockChartDateType.swift in Sources */,
 				07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */,
 				07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */,
 				07CC01EA2C27248E00AF9409 /* StockApi.swift in Sources */,
@@ -713,6 +738,7 @@
 				07CC01EC2C27288600AF9409 /* StockBaseInfo.swift in Sources */,
 				07CC01FA2C275C2F00AF9409 /* StockUpDown.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
+				07DB41252C29DC7500BF4BAE /* AdaptableSizeButton.swift in Sources */,
 				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC02182C2866C000AF9409 /* String+.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
@@ -724,6 +750,7 @@
 				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
 				07CC02072C27F09300AF9409 /* StockInfoViewModel.swift in Sources */,
 				07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */,
+				07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */,
 				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
 				07CC01F62C27527700AF9409 /* StockListInfo.swift in Sources */,
@@ -734,6 +761,7 @@
 				07CC01FC2C275D5400AF9409 /* TradeMarket.swift in Sources */,
 				07CC021F2C296A7900AF9409 /* StockChartViewModel.swift in Sources */,
 				07CC020C2C28025200AF9409 /* StockPageViewController.swift in Sources */,
+				07DB412D2C29F3DF00BF4BAE /* Double+.swift in Sources */,
 				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
