@@ -69,6 +69,9 @@
 		07CC02142C280B8A00AF9409 /* StockTrendViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC02132C280B8A00AF9409 /* StockTrendViewModel.swift */; };
 		07CC02162C2856AC00AF9409 /* StockPageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC02152C2856AC00AF9409 /* StockPageType.swift */; };
 		07CC02182C2866C000AF9409 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC02172C2866C000AF9409 /* String+.swift */; };
+		07CC021D2C296A6E00AF9409 /* StockChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */; };
+		07CC021F2C296A7900AF9409 /* StockChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */; };
+		07CC02232C296B4800AF9409 /* StockChartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CC02222C296B4800AF9409 /* StockChartModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +154,9 @@
 		07CC02132C280B8A00AF9409 /* StockTrendViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTrendViewModel.swift; sourceTree = "<group>"; };
 		07CC02152C2856AC00AF9409 /* StockPageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockPageType.swift; sourceTree = "<group>"; };
 		07CC02172C2866C000AF9409 /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewController.swift; sourceTree = "<group>"; };
+		07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewModel.swift; sourceTree = "<group>"; };
+		07CC02222C296B4800AF9409 /* StockChartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -492,6 +498,7 @@
 				07CC02152C2856AC00AF9409 /* StockPageType.swift */,
 				07CC020B2C28025200AF9409 /* StockPageViewController.swift */,
 				07CC020A2C28001000AF9409 /* Trend */,
+				07CC021B2C296A4300AF9409 /* Chart */,
 			);
 			path = PageView;
 			sourceTree = "<group>";
@@ -499,11 +506,37 @@
 		07CC020A2C28001000AF9409 /* Trend */ = {
 			isa = PBXGroup;
 			children = (
-				07CC02112C2807EC00AF9409 /* StockTrendModel.swift */,
+				07CC02202C296B2900AF9409 /* Model */,
 				07CC020D2C28031900AF9409 /* StockTrendViewController.swift */,
 				07CC02132C280B8A00AF9409 /* StockTrendViewModel.swift */,
 			);
 			path = Trend;
+			sourceTree = "<group>";
+		};
+		07CC021B2C296A4300AF9409 /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				07CC02212C296B3600AF9409 /* Model */,
+				07CC021C2C296A6E00AF9409 /* StockChartViewController.swift */,
+				07CC021E2C296A7900AF9409 /* StockChartViewModel.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		07CC02202C296B2900AF9409 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07CC02112C2807EC00AF9409 /* StockTrendModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		07CC02212C296B3600AF9409 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				07CC02222C296B4800AF9409 /* StockChartModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -651,6 +684,7 @@
 				07CC02052C27F08700AF9409 /* StockInfoViewController.swift in Sources */,
 				07CC01B82C253B2E00AF9409 /* LoginReqModel.swift in Sources */,
 				07CC020E2C28031900AF9409 /* StockTrendViewController.swift in Sources */,
+				07CC02232C296B4800AF9409 /* StockChartModel.swift in Sources */,
 				07CC01932C249A7400AF9409 /* LoginViewController.swift in Sources */,
 				07CC01A92C251F4000AF9409 /* UIButton+.swift in Sources */,
 				07CC01EA2C27248E00AF9409 /* StockApi.swift in Sources */,
@@ -662,6 +696,7 @@
 				07CC01512C24922F00AF9409 /* AppDelegate.swift in Sources */,
 				07CC02032C27F07200AF9409 /* StockInfoCoordinator.swift in Sources */,
 				07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */,
+				07CC021D2C296A6E00AF9409 /* StockChartViewController.swift in Sources */,
 				07CC01A32C25152100AF9409 /* SColor.swift in Sources */,
 				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
 				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
@@ -697,6 +732,7 @@
 				07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */,
 				07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */,
 				07CC01FC2C275D5400AF9409 /* TradeMarket.swift in Sources */,
+				07CC021F2C296A7900AF9409 /* StockChartViewModel.swift in Sources */,
 				07CC020C2C28025200AF9409 /* StockPageViewController.swift in Sources */,
 				07CC01952C249A8300AF9409 /* LoginViewModel.swift in Sources */,
 			);

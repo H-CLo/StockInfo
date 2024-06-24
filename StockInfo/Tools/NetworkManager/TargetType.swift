@@ -39,6 +39,8 @@ enum Target {
     case watchlistStocks
     /// 取得台股 股票代號 vs. 日走勢資料
     case stockTrend(id: String)
+
+    case stockChart(id: String)
 }
 
 extension Target: TargetType {
@@ -58,12 +60,14 @@ extension Target: TargetType {
             return "stockinfo/tw/watchliststocks/"
         case .stockTrend(let id):
             return "stockinfo/tw/stockdtrend/\(id)/"
+        case .stockChart(let id):
+            return "stockinfo/tw/stockkline/v2/\(id)/"
         }
     }
 
     var method: HTTPMethodType {
         switch self {
-        case .stockBaseInfo, .watchlistAll, .stockTrend:
+        case .stockBaseInfo, .watchlistAll, .stockTrend, .stockChart:
             return .get
         case .login, .watchlistStocks:
             return .post
