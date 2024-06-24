@@ -230,13 +230,13 @@ extension StockChartViewController: ChartViewDelegate {
         let attr = NSMutableAttributedString()
 
         // 開高低收
-        let open = StockLineTypeAttrBuilder(type: .open, value: chartData.open.description, valueColor: SColor.upColor).buildAttr()
+        let open = StockLineTypeAttrBuilder(type: .open, value: chartData.open.interceptDecimal(), valueColor: SColor.upColor).buildAttr()
         attr.append(open)
-        let high = StockLineTypeAttrBuilder(type: .high, value: chartData.high.description, valueColor: SColor.upColor).buildAttr()
+        let high = StockLineTypeAttrBuilder(type: .high, value: chartData.high.interceptDecimal(), valueColor: SColor.upColor).buildAttr()
         attr.append(high)
-        let low = StockLineTypeAttrBuilder(type: .low, value: chartData.low.description, valueColor: SColor.downColor).buildAttr()
+        let low = StockLineTypeAttrBuilder(type: .low, value: chartData.low.interceptDecimal(), valueColor: SColor.downColor).buildAttr()
         attr.append(low)
-        let close = StockLineTypeAttrBuilder(type: .close, value: chartData.close.description, valueColor: SColor.downColor).buildAttr()
+        let close = StockLineTypeAttrBuilder(type: .close, value: chartData.close.interceptDecimal(), valueColor: SColor.downColor).buildAttr()
         attr.append(close)
 
         // 漲跌
