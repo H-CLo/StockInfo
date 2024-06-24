@@ -14,4 +14,15 @@ enum TradeMarket: Int, Codable {
     case otc = 2
     /// 興櫃
     case emerging = 3
+
+    var title: String {
+        switch self {
+        case .listedCompany:
+            return LocalizeTool.string("上市")
+        case .otc:
+            return LocalizeTool.string("上櫃")
+        case .emerging:
+            return LocalizeTool.string("興櫃")
+        }
+    }
 }
