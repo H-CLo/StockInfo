@@ -1,14 +1,15 @@
 //
-//  StockPageViewController.swift
+//  StockInfoViewController.swift
 //  StockInfo
 //
 //  Created by Lo on 2024/6/23.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
-class StockPageViewController: BaseViewController<StockPageViewModel> {
+class StockInfoViewController: BaseViewController<StockInfoViewModel> {
+    lazy var pageViewController = StockPageViewController()
 
     let topContainerView: UIView = {
         let view = UIView()
@@ -56,13 +57,12 @@ class StockPageViewController: BaseViewController<StockPageViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
     }
 }
 
 // MARK: - UI
 
-extension StockPageViewController {
+extension StockInfoViewController {
     func setupUI() {
         view.addSubview(topContainerView)
         topContainerView.addSubview(stockMarketLabel)
@@ -107,15 +107,25 @@ extension StockPageViewController {
             $0.height.equalTo(40)
         }
 
-        let items = ["即時", "K線", "主力", "資券", "營收"].map { PageItemModel(index: 0, title: $0) }
+        // Setup pageList
+        let items = viewModel.stockPageTypes.map { PageItemModel(index: 0, title: $0.title) }
         pageListView.config(items: items)
+
+        // Setup PageViewController
+        addChild(pageViewController)
+        view.addSubview(pageViewController.view)
+        pageViewController.view.snp.makeConstraints {
+            $0.top.equalTo(pageListView.snp.bottom)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalToSuperview()
+        }
     }
 }
 
 // MARK: - PageListViewDelegate
 
-extension StockPageViewController: PageListViewDelegate {
-    func pageDidSelected(item: PageItemProtocol) {
-        //viewModel.changePageItem(item)
+extension StockInfoViewController: PageListViewDelegate {
+    func pageDidSelected(item _: PageItemProtocol) {
+        // viewModel.changePageItem(item)
     }
 }

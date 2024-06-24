@@ -17,8 +17,8 @@ final class StockListCoordinator: Coordinator {
 }
 
 extension StockListCoordinator: StockListViewControllerDelegate {
-    func showStockPage(id: String) {
-        let coordinator = StockPageCoordinator(navigationController: navigationController, appDependencies: appDependencies)
+    func showStockInfo(id: String) {
+        let coordinator = StockInfoCoordinator(navigationController: navigationController, appDependencies: appDependencies)
         coordinator.stockID = id
         coordinator.start()
     }

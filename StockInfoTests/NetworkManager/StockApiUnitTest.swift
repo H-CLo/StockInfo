@@ -64,4 +64,19 @@ final class StockApiUnitTest: XCTestCase {
         })
         self.wait(for: [expec], timeout: 5)
     }
+
+    func test_fetchStockTrend() {
+        let expec = XCTestExpectation(description: "test_fetchStockTrend")
+        network.fetchStockTrend(stockID: "2330", completion: { result in
+            switch result {
+            case .success(let model):
+                debugPrint("model = \(model)")
+                //XCTAssert(model.count > 0)
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+            expec.fulfill()
+        })
+        self.wait(for: [expec], timeout: 5)
+    }
 }

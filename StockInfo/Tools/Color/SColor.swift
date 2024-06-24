@@ -37,6 +37,7 @@ extension SColor {
     static let textColor2 = SColor.color("#000000")
     static let textColor3 = SColor.color("#463D46")
     static let yellowColor = SColor.color("#FFCB3C")
+    static let yellowColor1 = SColor.color("#FFB13B")
     static let disableColor = SColor.color("#2B202B")
     static let grayColor1 = SColor.color("#ABABAB")
     static let grayColor2 = SColor.color("#7A7A7A")

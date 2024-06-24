@@ -12,6 +12,7 @@ protocol StockApi {
     func fetchStockBaseInfo(completion: @escaping (Result<[StockBaseInfo], any Error>) -> Void)
     func fetchWatchListAll(completion: @escaping (Result<[WatchList], any Error>) -> Void)
     func fetchWatchListStocks(stockIDs: [String], completion: @escaping (Result<[String: WatchListStock], any Error>) -> Void)
+    func fetchStockTrend(stockID: String, completion: @escaping (Result<[String: Double], any Error>) -> Void)
 }
 
 extension NetworkManager: StockApi {
@@ -39,6 +40,17 @@ extension NetworkManager: StockApi {
 
     func fetchWatchListStocks(stockIDs: [String], completion: @escaping (Result<[String: WatchListStock], any Error>) -> Void) {
         request(target: Target.watchlistStocks, body: WatchListStocksReqModel(stock_ids: stockIDs)) { (result: ResponseHandler<[String: WatchListStock]>) in
+            switch result {
+            case let .success(model):
+                completion(.success(model))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
+    }
+
+    func fetchStockTrend(stockID: String, completion: @escaping (Result<[String: Double], any Error>) -> Void) {
+        request(target: Target.stockTrend(id: stockID)) { (result: ResponseHandler<[String: Double]>) in
             switch result {
             case let .success(model):
                 completion(.success(model))

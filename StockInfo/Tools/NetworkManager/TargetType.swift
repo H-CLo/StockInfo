@@ -37,6 +37,8 @@ enum Target {
     case watchlistAll
     /// 取得 watchlist 中，stock_ids 的參考價、現價、漲跌、漲跌輻
     case watchlistStocks
+    /// 取得台股 股票代號 vs. 日走勢資料
+    case stockTrend(id: String)
 }
 
 extension Target: TargetType {
@@ -54,12 +56,14 @@ extension Target: TargetType {
             return "watchlists/info/"
         case .watchlistStocks:
             return "stockinfo/tw/watchliststocks/"
+        case .stockTrend(let id):
+            return "stockinfo/tw/stockdtrend/\(id)/"
         }
     }
 
     var method: HTTPMethodType {
         switch self {
-        case .stockBaseInfo, .watchlistAll:
+        case .stockBaseInfo, .watchlistAll, .stockTrend:
             return .get
         case .login, .watchlistStocks:
             return .post
@@ -75,11 +79,15 @@ extension Target {
     func getHeaders() -> [String: String] {
         var headers = ["Content-Type": "application/json"]
 
-        if self != .login {
-            let accessToken = UserManager().loadToken()
-            headers["Authorization"] = "Bearer \(accessToken)"
+        // add Token
+        switch self {
+        case .login:
+            break
+        default:
+            // let accessToken = UserManager().loadToken()
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Mjk5NDUxLCJpYXQiOjE3MTkyMTMwNTEsImp0aSI6IjgzN2Q5OTFkMGVkOTQ2NjRhOWM4NzMwZDFmZmUwN2RjIiwidXNlcl9pZCI6OH0.AhVOcDlRvZylWPIAw5AF9SfvIfLQDBl77q9o0EkquyQ"
+            headers["Authorization"] = "Bearer \(token)"
         }
-
         return headers
     }
 }
