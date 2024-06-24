@@ -17,8 +17,7 @@ protocol StockPageViewControllerDelegate: AnyObject {
 }
 
 class StockPageViewController: UIPageViewController {
-
-    private (set) var viewControllerList: [UIViewController] = [UIViewController]()
+    private(set) var viewControllerList: [UIViewController] = .init()
     weak var stockPageViewDelegate: StockPageViewControllerDelegate?
 
     override func viewDidLoad() {
@@ -28,12 +27,12 @@ class StockPageViewController: UIPageViewController {
     }
 
     func setupViewControllers(_ viewControllers: [UIViewController]) {
-        self.viewControllerList = viewControllers
+        viewControllerList = viewControllers
     }
 
     func start() {
         guard let first = viewControllerList.first else { return }
-        self.setViewControllers([first], direction: .forward, animated: false)
+        setViewControllers([first], direction: .forward, animated: false)
     }
 
     func scrollTo(index: Int) {
@@ -49,8 +48,7 @@ extension StockPageViewController: UIPageViewControllerDataSource {
     ///   - pageViewController: _
     ///   - viewController: _
     /// - Returns: _
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-
+    func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         // 取得當前頁數的 index(未翻頁前)
         guard let currentIndex = viewControllerList.firstIndex(of: viewController) else { return nil }
 
@@ -58,7 +56,7 @@ extension StockPageViewController: UIPageViewControllerDataSource {
         let priviousIndex: Int = currentIndex - 1
 
         // 判斷上一頁的 index 是否小於 0，若小於 0 則停留在當前的頁數
-        return priviousIndex < 0 ? nil : self.viewControllerList[priviousIndex]
+        return priviousIndex < 0 ? nil : viewControllerList[priviousIndex]
     }
 
     /// 下一頁
@@ -67,8 +65,7 @@ extension StockPageViewController: UIPageViewControllerDataSource {
     ///   - pageViewController: _
     ///   - viewController: _
     /// - Returns: _
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-
+    func pageViewController(_: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         // 取得當前頁數的 index(未翻頁前)
         guard let currentIndex = viewControllerList.firstIndex(of: viewController) else { return nil }
 
@@ -76,20 +73,11 @@ extension StockPageViewController: UIPageViewControllerDataSource {
         let nextIndex: Int = currentIndex + 1
 
         // 判斷下一頁的 index 是否大於總頁數，若大於則停留在當前的頁數
-        return nextIndex > self.viewControllerList.count - 1 ? nil : self.viewControllerList[nextIndex]
-    }
-
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return viewControllerList.count
-    }
-
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        return 0
+        return nextIndex > viewControllerList.count - 1 ? nil : viewControllerList[nextIndex]
     }
 }
 
 extension StockPageViewController: UIPageViewControllerDelegate {
-
     /// 切換完頁數觸發的 func
     ///
     /// - Parameters:
@@ -97,15 +85,14 @@ extension StockPageViewController: UIPageViewControllerDelegate {
     ///   - finished: _
     ///   - previousViewControllers: _
     ///   - completed: _
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-
+    func pageViewController(_: UIPageViewController, didFinishAnimating _: Bool, previousViewControllers _: [UIViewController], transitionCompleted _: Bool) {
         // 取得當前頁數的 viewController
-        guard let currentViewController: UIViewController = self.viewControllers?.first else { return }
+        guard let currentViewController: UIViewController = viewControllers?.first else { return }
 
         // 取得當前頁數的 index
         guard let currentIndex = viewControllerList.firstIndex(of: currentViewController) else { return }
 
         // 設定 RootViewController 上 PageControl 的頁數
-        self.stockPageViewDelegate?.pageViewController(self, didUpdatePageIndex: currentIndex)
+        stockPageViewDelegate?.pageViewController(self, didUpdatePageIndex: currentIndex)
     }
 }
