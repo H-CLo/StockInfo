@@ -7,10 +7,19 @@
 
 import UIKit
 
+protocol StockPageViewControllerDelegate: AnyObject {
+    /// 當 pageViewController 切換頁數時，設定 pageControl 的頁數
+    ///
+    /// - Parameters:
+    ///   - pageViewController: _
+    ///   - pageIndex: _
+    func pageViewController(_ pageViewController: UIPageViewController, didUpdatePageIndex pageIndex: Int)
+}
+
 class StockPageViewController: UIPageViewController {
 
     private (set) var viewControllerList: [UIViewController] = [UIViewController]()
-    //weak var pageViewControllerDelegate: PageViewControllerDelegate?
+    weak var stockPageViewDelegate: StockPageViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +34,11 @@ class StockPageViewController: UIPageViewController {
     func start() {
         guard let first = viewControllerList.first else { return }
         self.setViewControllers([first], direction: .forward, animated: false)
+    }
+
+    func scrollTo(index: Int) {
+        guard let vc = viewControllerList[safe: index] else { return }
+        setViewControllers([vc], direction: .forward, animated: false)
     }
 }
 
@@ -92,6 +106,6 @@ extension StockPageViewController: UIPageViewControllerDelegate {
         guard let currentIndex = viewControllerList.firstIndex(of: currentViewController) else { return }
 
         // 設定 RootViewController 上 PageControl 的頁數
-        //self.pageViewControllerDelegate?.pageViewController(self, didUpdatePageIndex: currentIndex)
+        self.stockPageViewDelegate?.pageViewController(self, didUpdatePageIndex: currentIndex)
     }
 }

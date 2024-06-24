@@ -108,8 +108,7 @@ extension StockInfoViewController {
         }
 
         // Setup pageList
-        let items = viewModel.stockPageTypes.map { PageItemModel(index: 0, title: $0.title) }
-        pageListView.config(items: items)
+        setupPageListView(viewModel.stockPageTypes)
 
         // Setup PageViewController
         addChild(pageViewController)
@@ -119,13 +118,33 @@ extension StockInfoViewController {
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
+        pageViewController.stockPageViewDelegate = self
+    }
+
+    func setupPageListView(_ types: [StockPageType]) {
+        var models = [PageItemModel]()
+        for (index, type) in types.enumerated() {
+            let model = PageItemModel(index: index, title: type.title)
+            models.append(model)
+        }
+        pageListView.config(items: models)
     }
 }
 
 // MARK: - PageListViewDelegate
 
 extension StockInfoViewController: PageListViewDelegate {
-    func pageDidSelected(item _: PageItemProtocol) {
-        // viewModel.changePageItem(item)
+    func pageDidSelected(item: PageItemProtocol) {
+        pageViewController.scrollTo(index: item.index)
+    }
+
+    func pageItemScrollToIndex(_ index: Int) {
+        pageListView.scrollToIndex(index)
+    }
+}
+
+extension StockInfoViewController: StockPageViewControllerDelegate {
+    func pageViewController(_: UIPageViewController, didUpdatePageIndex pageIndex: Int) {
+        pageListView.scrollToIndex(pageIndex)
     }
 }

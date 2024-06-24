@@ -40,9 +40,25 @@ extension StockInfoCoordinator {
                 let trendViewController = StockTrendViewController(viewModel: viewModel)
                 viewControllers.append(trendViewController)
             case .chart:
-                viewControllers.append(UIViewController())
-            case .main, .margin, .discuss, .revenue:
-                viewControllers.append(UIViewController())
+                let vc = UIViewController()
+                vc.view.backgroundColor = .blue
+                viewControllers.append(vc)
+            case .main:
+                let vc = UIViewController()
+                vc.view.backgroundColor = .yellow
+                viewControllers.append(vc)
+            case .margin:
+                let vc = UIViewController()
+                vc.view.backgroundColor = .green
+                viewControllers.append(vc)
+            case .discuss:
+                let vc = UIViewController()
+                vc.view.backgroundColor = .purple
+                viewControllers.append(vc)
+            case .revenue:
+                let vc = UIViewController()
+                vc.view.backgroundColor = .red
+                viewControllers.append(vc)
             }
         }
         return viewControllers

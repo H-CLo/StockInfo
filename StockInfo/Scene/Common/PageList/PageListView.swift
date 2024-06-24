@@ -48,6 +48,11 @@ class PageListView: UIView {
         collectionView.reloadData()
         collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: false, scrollPosition: .left)
     }
+
+    func scrollToIndex(_ index: Int) {
+        guard index < viewModel.getSequenceCount() else { return }
+        collectionView.selectItem(at: IndexPath(item: index, section: 0), animated: false, scrollPosition: .centeredHorizontally)
+    }
 }
 
 extension PageListView {
