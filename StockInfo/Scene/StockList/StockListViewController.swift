@@ -10,7 +10,7 @@ import SnapKit
 import UIKit
 
 protocol StockListViewControllerDelegate: AnyObject {
-    func showStockInfo(id: String)
+    func showStockInfo(index: Int, infos: [StockBaseInfo])
 }
 
 class StockListViewController: BaseViewController<StockListViewModel> {
@@ -169,7 +169,7 @@ extension StockListViewController: UITableViewDataSource {
 extension StockListViewController: UITableViewDelegate {
     func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let info = viewModel.getSequenceItem(index: indexPath.row) else { return }
-        delegate?.showStockInfo(id: info.baseInfo.commodity_id)
+        delegate?.showStockInfo(index: indexPath.row, infos: viewModel.getWatchListStockBaseInfos())
     }
 
     func tableView(_: UITableView, heightForRowAt _: IndexPath) -> CGFloat {

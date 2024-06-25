@@ -10,9 +10,9 @@ import Foundation
 
 protocol StockInfoViewModelSpec {
     // Input
-    var stockID: String { get }
+    var index: Int { get set }
+    var infos: [StockBaseInfo] { get }
     var stockPageTypes: [StockPageType] { get }
-    var stockBaseInfos: Set<StockBaseInfo> { get }
     var watchListStock: WatchListStock { get }
 
     // Output
@@ -23,40 +23,29 @@ protocol StockInfoViewModelSpec {
 }
 
 final class StockInfoViewModel: BaseViewModel {
-    let stockID: String
+    var index: Int
+    let infos: [StockBaseInfo]
+    var stockID: String { infos[safe: index]?.commodity_id ?? "" }
     let stockPageTypes: [StockPageType]
-    private(set) var stockBaseInfos: Set<StockBaseInfo> = []
     private(set) var watchListStock: WatchListStock?
 
     var watchListStockDidSet: PassthroughSubject<WatchListStock?, Never> = .init()
 
-    init(stockID: String, stockPageTypes: [StockPageType], appDependencies: AppDependencies) {
-        self.stockID = stockID
+    init(index: Int, infos: [StockBaseInfo], stockPageTypes: [StockPageType], appDependencies: AppDependencies) {
+        self.index = index
+        self.infos = infos
         self.stockPageTypes = stockPageTypes
         super.init(appDependencies: appDependencies)
     }
 
-    func getStockInfo(byID: String) -> StockBaseInfo? {
-        return stockBaseInfos.first(where: { $0.commodity_id == byID })
+    func start() {
+        fetchWatchListStocks(stockIDs: [stockID])
     }
 }
 
 extension StockInfoViewModel {
-    func fetchStockBaseInfo() {
-        isLoading.send(true)
-
-        apiManager.fetchStockBaseInfo { [weak self] result in
-            switch result {
-            case let .success(models):
-                self?.stockBaseInfos = Set(models)
-                self?.fetchWatchListStocks(stockIDs: [self?.stockID ?? ""])
-            case .failure:
-                self?.isLoading.send(false)
-            }
-        }
-    }
-
     func fetchWatchListStocks(stockIDs: [String]) {
+        isLoading.send(true)
         apiManager.fetchWatchListStocks(stockIDs: stockIDs) { [weak self] result in
             switch result {
             case let .success(models):

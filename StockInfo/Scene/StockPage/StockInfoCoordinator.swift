@@ -9,12 +9,17 @@ import Foundation
 import UIKit
 
 final class StockInfoCoordinator: Coordinator {
-    var stockID: String = ""
+    var index: Int = 0
+    var infos = [StockBaseInfo]()
+    var stockID: String {
+        return infos[safe: index]?.commodity_id ?? ""
+    }
+
     private(set) var pageViewControllers = [UIViewController]()
 
     override func start() {
         let types = StockPageType.allCases
-        let viewModel = StockInfoViewModel(stockID: stockID, stockPageTypes: types, appDependencies: appDependencies)
+        let viewModel = StockInfoViewModel(index: index, infos: infos, stockPageTypes: types, appDependencies: appDependencies)
         let viewController = StockInfoViewController(viewModel: viewModel)
         viewController.pageViewController = makeStockPage(types)
         navigationController.pushViewController(viewController, animated: false)

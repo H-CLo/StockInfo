@@ -80,6 +80,7 @@
 		07DB412F2C2A9FCB00BF4BAE /* StockListSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */; };
 		07DB41322C2AAAE900BF4BAE /* AppDirectoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */; };
 		07DB41342C2AAB8600BF4BAE /* ApiCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */; };
+		07DB41372C2AD00C00BF4BAE /* StockInfoNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +174,7 @@
 		07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListSorter.swift; sourceTree = "<group>"; };
 		07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectoryProtocol.swift; sourceTree = "<group>"; };
 		07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCacheRepository.swift; sourceTree = "<group>"; };
+		07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfoNavView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 		07CC018F2C249A0400AF9409 /* StockPage */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41352C2ACFC600BF4BAE /* View */,
 				07CC02092C28000500AF9409 /* PageView */,
 				07CC02082C27F9A700AF9409 /* Model */,
 				07CC02022C27F07200AF9409 /* StockInfoCoordinator.swift */,
@@ -579,6 +582,14 @@
 			path = CacheRepository;
 			sourceTree = "<group>";
 		};
+		07DB41352C2ACFC600BF4BAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -750,6 +761,7 @@
 				07CC01E82C27047B00AF9409 /* StockListTableViewCell.swift in Sources */,
 				07CC01CF2C258A1900AF9409 /* StockListViewController.swift in Sources */,
 				07CC01DB2C26DED700AF9409 /* Collection+.swift in Sources */,
+				07DB41372C2AD00C00BF4BAE /* StockInfoNavView.swift in Sources */,
 				07CC01D52C26DC5700AF9409 /* PageListView.swift in Sources */,
 				07CC01E22C26F94200AF9409 /* SortType.swift in Sources */,
 				07CC01BD2C253E3200AF9409 /* Data+.swift in Sources */,

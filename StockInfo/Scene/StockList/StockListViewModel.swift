@@ -71,6 +71,10 @@ extension StockListViewModel {
         self.sortType = sortType
         stockListInfos = StockListSorter(columnType: columnType, sortType: sortType, items: stockListInfos).sortItems()
     }
+
+    func getWatchListStockBaseInfos() -> [StockBaseInfo] {
+        return stockListInfos.compactMap {$0.baseInfo}
+    }
 }
 
 // MARK: - TableView

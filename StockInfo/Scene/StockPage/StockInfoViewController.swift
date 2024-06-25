@@ -13,6 +13,11 @@ class StockInfoViewController: BaseViewController<StockInfoViewModel> {
     private var cancelBags = Set<AnyCancellable>()
     lazy var pageViewController = StockPageViewController()
 
+    let navView: StockInfoNavView = {
+        let nav = StockInfoNavView(frame: CGRect(x: 0, y: 0, width: 114, height: 44))
+        return nav
+    }()
+
     let topContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = SColor.backgroundColor
@@ -60,7 +65,11 @@ class StockInfoViewController: BaseViewController<StockInfoViewModel> {
         super.viewDidLoad()
         setupUI()
         bind()
-        viewModel.fetchStockBaseInfo()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.start()
     }
 }
 
@@ -68,6 +77,8 @@ class StockInfoViewController: BaseViewController<StockInfoViewModel> {
 
 extension StockInfoViewController {
     func setupUI() {
+        addNavigationBarView(navView)
+        setupNavView()
         view.addSubview(topContainerView)
         topContainerView.addSubview(stockMarketLabel)
         topContainerView.addSubview(timeLabel)
@@ -125,6 +136,15 @@ extension StockInfoViewController {
         pageViewController.stockPageViewDelegate = self
     }
 
+    func setupNavView() {
+        navView.setup(index: viewModel.index,
+                      stockInfos: viewModel.infos,
+                      block: { [weak self] index in
+                          self?.viewModel.index = index
+                          self?.viewModel.start()
+                      })
+    }
+
     func setupPageListView(_ types: [StockPageType]) {
         var models = [PageItemModel]()
         for (index, type) in types.enumerated() {
@@ -149,7 +169,7 @@ extension StockInfoViewController {
     }
 
     func setupStockInformation(model: WatchListStock) {
-        let stockBaseInfo = viewModel.getStockInfo(byID: viewModel.stockID)
+        let stockBaseInfo = viewModel.infos[safe: viewModel.index]
         stockMarketLabel.text = stockBaseInfo?.trading_market.title
         let upDown = StockUpDown(diffPrice: model.diff)
         priceLabel.text = model.currentPrice

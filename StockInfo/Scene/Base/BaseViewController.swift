@@ -29,4 +29,8 @@ class BaseViewController<ViewModel: BaseViewModel>: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+
+    func addNavigationBarView(_ customView: UIView) {
+        navigationItem.titleView = customView
+    }
 }
