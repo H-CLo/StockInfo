@@ -17,7 +17,6 @@ protocol SortableColumnProtocol {
 final class SortableView<ColumnType: SortableColumnProtocol>: UIView {
     private(set) var sortType: SortType = .none {
         didSet {
-            sortTypeDidSet.send((columnType, sortType))
             sortImageView.image = UIImage(named: sortType.imageName)
         }
     }
@@ -67,8 +66,9 @@ final class SortableView<ColumnType: SortableColumnProtocol>: UIView {
         case .up:
             sortType = .down
         case .down:
-            sortType = .none
+            sortType = .up
         }
+        sortTypeDidSet.send((columnType, sortType))
     }
 
     // Internal
@@ -76,6 +76,14 @@ final class SortableView<ColumnType: SortableColumnProtocol>: UIView {
     func setColumnType(_ type: ColumnType) {
         columnType = type
         titleLabel.text = type.title
+    }
+
+    func resetSortType() {
+        sortType = .none
+    }
+
+    func getColumnType() -> ColumnType? {
+        return columnType
     }
 }
 

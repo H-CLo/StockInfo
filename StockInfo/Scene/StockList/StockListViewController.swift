@@ -28,6 +28,7 @@ class StockListViewController: BaseViewController<StockListViewModel> {
         return view
     }()
 
+    private(set) var sortViews: [SortableView<StockListColumnType>] = []
     let stockColumnStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -42,7 +43,7 @@ class StockListViewController: BaseViewController<StockListViewModel> {
         tableView.register(StockListTableViewCell.self, forCellReuseIdentifier: cellName)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.backgroundColor = SColor.backgroundColor1
+        tableView.backgroundColor = .black
         return tableView
     }()
 
@@ -107,18 +108,28 @@ extension StockListViewController {
             sortView.sortTypeDidSet.sink { [weak self] columnType, sortType in
                 self?.sortTypeDidSet(column: columnType, sortType: sortType)
             }.store(in: &cancelBags)
+            sortViews.append(sortView)
             stockColumnStackView.addArrangedSubview(sortView)
         }
     }
 
-    // TODO: - Implement logic
-    func sortTypeDidSet(column _: StockListColumnType?, sortType _: SortType) {}
+    func sortTypeDidSet(column: StockListColumnType?, sortType: SortType) {
+        guard let column = column else { return }
+        // 更新畫面
+        sortViews
+            .filter { $0.getColumnType() != column }
+            .forEach { $0.resetSortType() }
+        // 邏輯
+        viewModel.sortItems(columnType: column, sortType: sortType)
+        tableView.reloadData()
+    }
 }
 
 // MARK: - PageListViewDelegate
 
 extension StockListViewController: PageListViewDelegate {
     func pageDidSelected(item: PageItemProtocol) {
+        sortViews.forEach { $0.resetSortType() }
         viewModel.changePageItem(item)
     }
 }
@@ -136,6 +147,7 @@ extension StockListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: StockListTableViewCell.self), for: indexPath) as? StockListTableViewCell else { return UITableViewCell() }
+        cell.selectionStyle = .none
         if let info = viewModel.getSequenceItem(index: indexPath.row) {
             cell.configCell(info: info)
         }

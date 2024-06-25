@@ -89,7 +89,7 @@ extension Target {
             break
         default:
             // let accessToken = UserManager().loadToken()
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Mjk5NDUxLCJpYXQiOjE3MTkyMTMwNTEsImp0aSI6IjgzN2Q5OTFkMGVkOTQ2NjRhOWM4NzMwZDFmZmUwN2RjIiwidXNlcl9pZCI6OH0.AhVOcDlRvZylWPIAw5AF9SfvIfLQDBl77q9o0EkquyQ"
+            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Mzg2NDAyLCJpYXQiOjE3MTkzMDAwMDIsImp0aSI6IjQ0OGRjYTVkODQwMjRkYzU4MDMwMjI3YzA4ZWQxODNlIiwidXNlcl9pZCI6OH0.okmT7kOdNBWtRYWx7AZ7eiQk66TMfogYKV1ZqaUAo3s"
             headers["Authorization"] = "Bearer \(token)"
         }
         return headers

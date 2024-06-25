@@ -9,6 +9,10 @@ import Foundation
 
 extension String {
 
+    var doubleValue: Double {
+        return Double(self) ?? 0
+    }
+
     func intervalToDate() -> Date? {
         guard let integer = Int(self) else { return nil }
         let timeInterval = TimeInterval(integer)

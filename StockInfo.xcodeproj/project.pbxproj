@@ -77,6 +77,7 @@
 		07DB41272C29DCEB00BF4BAE /* StockChartLineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41262C29DCEB00BF4BAE /* StockChartLineType.swift */; };
 		07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */; };
 		07DB412D2C29F3DF00BF4BAE /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412C2C29F3DF00BF4BAE /* Double+.swift */; };
+		07DB412F2C2A9FCB00BF4BAE /* StockListSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +168,7 @@
 		07DB41262C29DCEB00BF4BAE /* StockChartLineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartLineType.swift; sourceTree = "<group>"; };
 		07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeAttr.swift; sourceTree = "<group>"; };
 		07DB412C2C29F3DF00BF4BAE /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
+		07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListSorter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -465,6 +467,7 @@
 				07CC01EF2C272D7800AF9409 /* WatchListAll.swift */,
 				07CC01F12C272ED500AF9409 /* WatchListStocks.swift */,
 				07CC01F52C27527700AF9409 /* StockListInfo.swift */,
+				07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				07CC02162C2856AC00AF9409 /* StockPageType.swift in Sources */,
 				07CC01E52C26FCFA00AF9409 /* StockListColumnType.swift in Sources */,
 				07CC01512C24922F00AF9409 /* AppDelegate.swift in Sources */,
+				07DB412F2C2A9FCB00BF4BAE /* StockListSorter.swift in Sources */,
 				07CC02032C27F07200AF9409 /* StockInfoCoordinator.swift in Sources */,
 				07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */,
 				07CC021D2C296A6E00AF9409 /* StockChartViewController.swift in Sources */,

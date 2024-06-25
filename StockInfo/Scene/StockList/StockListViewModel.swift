@@ -14,14 +14,17 @@ protocol StockListViewModelSpec {
     var watchListIndex: Int { get }
     var watchListStocks: [String: WatchListStock] { get }
     var stockListInfos: [StockListInfo] { get }
+    var sortColumnType: StockListColumnType? { get }
+    var sortType: SortType { get }
+
+    // func
+    func changePageItem(_ item: PageItemProtocol)
+    func sortItems(columnType: StockListColumnType, sortType: SortType)
     func fetchStockBaseInfo()
     func fetchWatchListAll()
     func fetchWatchListStocks(stockIDs: [String])
-
     func getSequenceCount() -> Int
     func getSequenceItem(index: Int) -> StockListInfo?
-
-    func changePageItem(_ item: PageItemProtocol)
 
     // Binding
     var watchListsDidSet: PassthroughSubject<[WatchList], Never> { get }
@@ -29,11 +32,13 @@ protocol StockListViewModelSpec {
 }
 
 final class StockListViewModel: BaseViewModel, StockListViewModelSpec {
-    private (set) var stockBaseInfos: Set<StockBaseInfo> = []
-    private (set) var watchLists: [WatchList] = []
-    private (set) var watchListIndex: Int = 0
-    private (set) var watchListStocks: [String: WatchListStock] = [:]
-    private (set) var stockListInfos: [StockListInfo] = []
+    private(set) var stockBaseInfos: Set<StockBaseInfo> = []
+    private(set) var watchLists: [WatchList] = []
+    private(set) var watchListIndex: Int = 0
+    private(set) var watchListStocks: [String: WatchListStock] = [:]
+    private(set) var stockListInfos: [StockListInfo] = []
+    private(set) var sortColumnType: StockListColumnType?
+    private(set) var sortType: SortType = .none
 
     var watchListsDidSet: PassthroughSubject<[WatchList], Never> = .init()
     var watchListStocksDidSet: PassthroughSubject<Void, Never> = .init()
@@ -44,9 +49,16 @@ final class StockListViewModel: BaseViewModel, StockListViewModelSpec {
 extension StockListViewModel {
     func changePageItem(_ item: PageItemProtocol) {
         // cancel polling
-        guard let index = watchLists.firstIndex(where: {$0.order == item.index && $0.display_name == item.title}) else { return }
+        guard let index = watchLists.firstIndex(where: { $0.order == item.index && $0.display_name == item.title }) else { return }
         watchListIndex = index
         fetchWatchListStocksByIndex()
+    }
+
+    func sortItems(columnType: StockListColumnType, sortType: SortType) {
+        // update property
+        sortColumnType = columnType
+        self.sortType = sortType
+        stockListInfos = StockListSorter(columnType: columnType, sortType: sortType, items: stockListInfos).sortItems()
     }
 }
 
@@ -73,7 +85,7 @@ extension StockListViewModel {
             case let .success(models):
                 self?.stockBaseInfos = Set(models)
                 self?.fetchWatchListAll()
-            case .failure(_):
+            case .failure:
                 break
             }
         }
@@ -87,7 +99,7 @@ extension StockListViewModel {
                 self?.watchListsDidSet.send(models)
                 // 預設是第0筆為顯示，抓第0筆的 stocks information
                 self?.fetchWatchListStocksByIndex()
-            case .failure(_):
+            case .failure:
                 break
             }
         }
@@ -108,7 +120,7 @@ extension StockListViewModel {
                 self?.watchListStocks = models
                 self?.constructStockListInfos(models: models)
                 self?.watchListStocksDidSet.send()
-            case .failure(_):
+            case .failure:
                 break
             }
             self?.isLoading.send(false)
@@ -118,7 +130,7 @@ extension StockListViewModel {
     func constructStockListInfos(models: [String: WatchListStock]) {
         var infos = [StockListInfo]()
         for model in models {
-            guard let baseInfo = stockBaseInfos.first(where: {$0.commodity_id == model.key }) else { continue }
+            guard let baseInfo = stockBaseInfos.first(where: { $0.commodity_id == model.key }) else { continue }
             let info = StockListInfo(baseInfo: baseInfo, stock: model.value)
             infos.append(info)
         }
