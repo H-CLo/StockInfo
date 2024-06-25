@@ -16,7 +16,6 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
 
     let topContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = SColor.backgroundColor1
         return view
     }()
 
@@ -28,7 +27,6 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
         stackView.clipsToBounds = true
         stackView.layer.borderColor = SColor.grayColor3.cgColor
         stackView.layer.borderWidth = 1
-        stackView.backgroundColor = SColor.backgroundColor1
         return stackView
     }()
 
@@ -40,27 +38,24 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
         button.layer.cornerRadius = 5.25
         button.layer.borderColor = SColor.grayColor3.cgColor
         button.layer.borderWidth = 0.88
-        button.backgroundColor = SColor.backgroundColor1
         return button
     }()
 
     let lineTypeLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.backgroundColor = SColor.backgroundColor1
         return label
     }()
 
     lazy var chartView: CandleStickChartView = {
         let charView = CandleStickChartView(frame: .zero)
-        charView.backgroundColor = SColor.backgroundColor1
         charView.delegate = self
         return charView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = SColor.backgroundColor1
+        setupLayout()
         setupUI()
         bind()
         viewModel.fetchStockChart()
@@ -68,6 +63,10 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
 }
 
 extension StockChartViewController {
+    func setupLayout() {
+        view.backgroundColor = .black
+    }
+
     func setupUI() {
         view.addSubview(topContainer)
         topContainer.addSubview(dateTypeStackView)
@@ -150,7 +149,7 @@ extension StockChartViewController {
 
         let set = CandleChartDataSet(entries: yVals)
         set.axisDependency = .right
-        set.setColor(.darkGray)
+        set.setColor(.lightGray)
         set.drawIconsEnabled = false
         set.shadowColorSameAsCandle = true
         set.shadowWidth = 1

@@ -23,28 +23,27 @@ final class StockTrendViewController: BaseViewController<StockTrendViewModel> {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLayout()
         setupUI()
         bind()
         setChartConfig()
-        viewModel.fetchStockTrend()
-
-        let entries = makeEntries()
-        setupCharts(entries)
+        viewModel.start()
     }
 }
 
 extension StockTrendViewController {
     func bind() {
-        viewModel.trendDataDidGet
-            .map { model in
-                model.trends.sorted(by: { $0.timeInterval < $1.timeInterval }).map { ChartDataEntry(x: $0.timeInterval, y: $0.price) }
-            }.sink { [weak self] _ in
-                // self?.setupCharts(entries)
-            }.store(in: &cancelBags)
+        viewModel.trendDataDidGet.sink { [weak self] model in
+            self?.setupCharts(model)
+        }.store(in: &cancelBags)
     }
 }
 
 extension StockTrendViewController {
+    func setupLayout() {
+        view.backgroundColor = .black
+    }
+
     func setupUI() {
         view.addSubview(chartView)
         chartView.snp.makeConstraints {
@@ -63,28 +62,16 @@ extension StockTrendViewController {
         chartView.dragEnabled = false
         chartView.setScaleEnabled(false)
         chartView.pinchZoomEnabled = false
-        chartView.backgroundColor = SColor.backgroundColor1
     }
 
-    func makeEntries() -> [ChartDataEntry] {
-        var dataEntries = [ChartDataEntry]()
-        var dataEntries1 = [ChartDataEntry]()
-        for i in 0 ..< 20 {
-            let y = arc4random() % 50
-            let entry = ChartDataEntry(x: Double(i + 1), y: Double(y))
-            debugPrint("Y value = \(y)")
-            dataEntries.append(entry)
-        }
-        return dataEntries
-    }
-
-    func setupCharts(_ dataEntries: [ChartDataEntry]) {
+    func setupCharts(_ model: StockTrendModel) {
+        let dataEntries = model.trends.sorted(by: { $0.timeInterval < $1.timeInterval }).map { ChartDataEntry(x: $0.timeInterval, y: $0.price) }
         let dataSet = LineChartDataSet(entries: dataEntries, label: "Line chart")
 
         // 美術設定
         dataSet.drawCirclesEnabled = false
         // 折線顏色
-        dataSet.setColors(.clear)
+        dataSet.setColors(SColor.upColor)
         // 長按十字
         dataSet.highlightEnabled = true
         dataSet.highlightColor = SColor.yellowColor1
@@ -96,81 +83,26 @@ extension StockTrendViewController {
         dataSet.drawValuesEnabled = false
 
         chartView.xAxis.drawLabelsEnabled = true
-        chartView.leftAxis.drawLabelsEnabled = true
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        chartView.xAxis.labelTextColor = .white
+        chartView.xAxis.valueFormatter = TrendXAxisValueFormatter(data: model.trends)
+
+        chartView.rightAxis.drawLabelsEnabled = false
         chartView.leftAxis.labelPosition = .outsideChart
+        chartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
         chartView.leftAxis.labelTextColor = .white
+        let yAxisRenderer = TrendLeftAxisRenderer(viewPortHandler: chartView.leftYAxisRenderer.viewPortHandler,
+                                                  axis: chartView.leftYAxisRenderer.axis,
+                                                  transformer: chartView.leftYAxisRenderer.transformer)
+        yAxisRenderer.refPrice = viewModel.watchListStock?.refPrice.doubleValue ?? 0
+        chartView.leftYAxisRenderer = yAxisRenderer
 
-        // ChartLimitLine(limit: <#T##Double#>, label: <#T##String#>)
-        // chartView.leftAxis.addLimitLine(<#T##line: ChartLimitLine##ChartLimitLine#>)
+        let lineChartRenderer = TrendLineChartRenderer(dataProvider: chartView, animator: chartView.chartAnimator, viewPortHandler: chartView.viewPortHandler)
+        chartView.renderer = lineChartRenderer
 
+        // Set data
         let chartData = LineChartData(dataSets: [dataSet])
         chartView.data = chartData
-        // chartView.renderer = CustomLineChartRenderer(dataProvider: chartView, animator: chartView.chartAnimator, viewPortHandler: chartView.viewPortHandler)
-    }
-
-    func setupXAxis(min _: Double, max _: Double) {
-        let xAxis = chartView.xAxis
-        xAxis.labelPosition = .topInside
-        xAxis.labelFont = .systemFont(ofSize: 10, weight: .light)
-        xAxis.labelTextColor = UIColor(red: 255 / 255, green: 192 / 255, blue: 56 / 255, alpha: 1)
-        xAxis.drawAxisLineEnabled = false
-        xAxis.drawGridLinesEnabled = true
-        xAxis.centerAxisLabelsEnabled = true
-    }
-
-    func setupYAxis() {
-        let leftAxis = chartView.leftAxis
-        leftAxis.labelPosition = .outsideChart
-        leftAxis.labelFont = .systemFont(ofSize: 12)
-        leftAxis.drawGridLinesEnabled = true
-        leftAxis.granularityEnabled = true
-        leftAxis.axisMinimum = 900
-        leftAxis.axisMaximum = 1000
-        leftAxis.labelTextColor = .white
-    }
-}
-
-class CustomLineChartRenderer: LineChartRenderer {
-    override func drawLinear(context: CGContext, dataSet: LineChartDataSetProtocol) {
-        guard let dataProvider = dataProvider else { return }
-
-        let trans = dataProvider.getTransformer(forAxis: dataSet.axisDependency)
-
-        // var entries = dataSet.en
-
-        if dataSet.entryCount < 2 {
-            return
-        }
-
-        context.saveGState()
-
-        context.setLineWidth(dataSet.lineWidth)
-        context.setLineCap(.butt)
-
-        let valueToPixelMatrix = trans.valueToPixelMatrix
-
-        for i in 0 ..< dataSet.entryCount - 1 {
-            guard let entry = dataSet.entryForIndex(i) else { continue }
-            guard let nextEntry = dataSet.entryForIndex(i + 1) else { continue }
-
-            var startPoint = CGPoint(x: entry.x, y: entry.y).applying(valueToPixelMatrix)
-            var endPoint = CGPoint(x: nextEntry.x, y: nextEntry.y).applying(valueToPixelMatrix)
-
-            // Determine the color based on y-value
-            let color: UIColor
-            if entry.y > 20 {
-                color = .red
-            } else {
-                color = .blue
-            }
-
-            context.setStrokeColor(color.cgColor)
-            context.beginPath()
-            context.move(to: startPoint)
-            context.addLine(to: endPoint)
-            context.strokePath()
-        }
-
-        context.restoreGState()
     }
 }

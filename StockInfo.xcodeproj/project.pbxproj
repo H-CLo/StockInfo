@@ -81,6 +81,9 @@
 		07DB41322C2AAAE900BF4BAE /* AppDirectoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */; };
 		07DB41342C2AAB8600BF4BAE /* ApiCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */; };
 		07DB41372C2AD00C00BF4BAE /* StockInfoNavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */; };
+		07DB413A2C2B13EE00BF4BAE /* TrendLineChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41392C2B13EE00BF4BAE /* TrendLineChartRenderer.swift */; };
+		07DB413C2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB413B2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift */; };
+		07DB413E2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB413D2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +178,9 @@
 		07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectoryProtocol.swift; sourceTree = "<group>"; };
 		07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCacheRepository.swift; sourceTree = "<group>"; };
 		07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockInfoNavView.swift; sourceTree = "<group>"; };
+		07DB41392C2B13EE00BF4BAE /* TrendLineChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendLineChartRenderer.swift; sourceTree = "<group>"; };
+		07DB413B2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendXAxisValueFormatter.swift; sourceTree = "<group>"; };
+		07DB413D2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendLeftAxisRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -529,6 +535,7 @@
 		07CC020A2C28001000AF9409 /* Trend */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41382C2B13D100BF4BAE /* View */,
 				07CC02202C296B2900AF9409 /* Model */,
 				07CC020D2C28031900AF9409 /* StockTrendViewController.swift */,
 				07CC02132C280B8A00AF9409 /* StockTrendViewModel.swift */,
@@ -588,6 +595,16 @@
 				07DB41362C2AD00C00BF4BAE /* StockInfoNavView.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		07DB41382C2B13D100BF4BAE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				07DB413B2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift */,
+				07DB413D2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift */,
+				07DB41392C2B13EE00BF4BAE /* TrendLineChartRenderer.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -769,6 +786,7 @@
 				07CC01EC2C27288600AF9409 /* StockBaseInfo.swift in Sources */,
 				07CC01FA2C275C2F00AF9409 /* StockUpDown.swift in Sources */,
 				07CC01532C24922F00AF9409 /* SceneDelegate.swift in Sources */,
+				07DB413A2C2B13EE00BF4BAE /* TrendLineChartRenderer.swift in Sources */,
 				07DB41252C29DC7500BF4BAE /* AdaptableSizeButton.swift in Sources */,
 				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC02182C2866C000AF9409 /* String+.swift in Sources */,
@@ -781,6 +799,7 @@
 				07CC01B32C25270900AF9409 /* TargetType.swift in Sources */,
 				07CC02072C27F09300AF9409 /* StockInfoViewModel.swift in Sources */,
 				07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */,
+				07DB413E2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift in Sources */,
 				07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */,
 				07DB41342C2AAB8600BF4BAE /* ApiCacheRepository.swift in Sources */,
 				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
@@ -789,6 +808,7 @@
 				07CC018A2C24995E00AF9409 /* Coordinator.swift in Sources */,
 				07CC01A62C25173F00AF9409 /* LocalizeTool.swift in Sources */,
 				07CC01B52C25274100AF9409 /* LoginApi.swift in Sources */,
+				07DB413C2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift in Sources */,
 				07CC01F22C272ED500AF9409 /* WatchListStocks.swift in Sources */,
 				07CC01FC2C275D5400AF9409 /* TradeMarket.swift in Sources */,
 				07CC021F2C296A7900AF9409 /* StockChartViewModel.swift in Sources */,

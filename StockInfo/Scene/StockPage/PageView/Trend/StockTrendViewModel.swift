@@ -16,6 +16,7 @@ protocol StockTrendViewModelSpec {
 
 class StockTrendViewModel: BaseViewModel, StockTrendViewModelSpec {
     private let id: String
+    var watchListStock: WatchListStock?
     var trendModel = StockTrendModel(dict: [:])
     var trendDataDidGet: PassthroughSubject<StockTrendModel, Never> = .init()
 
@@ -23,10 +24,29 @@ class StockTrendViewModel: BaseViewModel, StockTrendViewModelSpec {
         self.id = id
         super.init(appDependencies: appDependencies)
     }
+
+    func start() {
+        fetchWatchListStocks()
+    }
 }
 
 extension StockTrendViewModel {
+    func fetchWatchListStocks() {
+        isLoading.send(true)
+        apiManager.fetchWatchListStocks(stockIDs: [id]) { [weak self] result in
+            switch result {
+            case let .success(models):
+                self?.watchListStock = models.first?.value
+                self?.fetchStockTrend()
+            case .failure:
+                break
+            }
+            self?.isLoading.send(false)
+        }
+    }
+
     func fetchStockTrend() {
+        isLoading.send(true)
         apiManager.fetchStockTrend(stockID: id) {[weak self] result in
             switch result {
             case .success(let models):
@@ -36,6 +56,7 @@ extension StockTrendViewModel {
             case .failure(_):
                 break
             }
+            self?.isLoading.send(false)
         }
     }
 }
