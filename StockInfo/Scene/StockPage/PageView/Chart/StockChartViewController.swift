@@ -58,7 +58,32 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
         setupLayout()
         setupUI()
         bind()
-        viewModel.fetchStockChart()
+        viewModel.start()
+    }
+}
+
+// MARK: - StockPageViewProtocol
+
+extension StockChartViewController: StockPageViewProtocol {
+    func setStockID(id: String) {
+        viewModel.setStockID(id: id)
+    }
+
+    func reload() {
+        viewModel.start()
+    }
+}
+
+extension StockChartViewController {
+    func bind() {
+        viewModel.isLoading.sink { isLoading in
+            self.isLoading = isLoading
+        }.store(in: &cancelBags)
+
+        viewModel.chartDataDidGet.sink { [weak self] result in
+            self?.setupCharts(model: result)
+            self?.displayLineTypeLabel(index: result.data.count - 1)
+        }.store(in: &cancelBags)
     }
 }
 
@@ -124,15 +149,6 @@ extension StockChartViewController {
     func dateTypeButtonTapped(_ button: UIButton) {
         dateTypeButtons.forEach { $0.isSelected = false }
         button.isSelected = true
-    }
-}
-
-extension StockChartViewController {
-    func bind() {
-        viewModel.chartDataDidGet.sink { [weak self] result in
-            self?.setupCharts(model: result)
-            self?.displayLineTypeLabel(index: result.data.count - 1)
-        }.store(in: &cancelBags)
     }
 }
 

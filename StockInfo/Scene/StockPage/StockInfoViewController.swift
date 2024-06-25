@@ -142,6 +142,8 @@ extension StockInfoViewController {
                       block: { [weak self] index in
                           self?.viewModel.index = index
                           self?.viewModel.start()
+                          self?.pageViewController.updateStockID(id: self?.viewModel.stockID ?? "")
+                          self?.pageViewController.reloadCurrentView()
                       })
     }
 

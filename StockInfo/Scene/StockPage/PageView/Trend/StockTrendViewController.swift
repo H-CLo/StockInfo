@@ -31,8 +31,24 @@ final class StockTrendViewController: BaseViewController<StockTrendViewModel> {
     }
 }
 
+// MARK: - StockPageViewProtocol
+
+extension StockTrendViewController: StockPageViewProtocol {
+    func setStockID(id: String) {
+        viewModel.setStockID(id: id)
+    }
+
+    func reload() {
+        viewModel.start()
+    }
+}
+
 extension StockTrendViewController {
     func bind() {
+        viewModel.isLoading.sink { isLoading in
+            self.isLoading = isLoading
+        }.store(in: &cancelBags)
+
         viewModel.trendDataDidGet.sink { [weak self] model in
             self?.setupCharts(model)
         }.store(in: &cancelBags)
@@ -51,8 +67,6 @@ extension StockTrendViewController {
         }
     }
 }
-
-extension StockTrendViewController: ChartViewDelegate {}
 
 // MARK: - Chart
 
@@ -106,3 +120,5 @@ extension StockTrendViewController {
         chartView.data = chartData
     }
 }
+
+extension StockTrendViewController: ChartViewDelegate {}

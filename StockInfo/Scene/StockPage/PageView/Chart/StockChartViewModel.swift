@@ -15,13 +15,21 @@ protocol StockChartViewModelSpec {
 }
 
 final class StockChartViewModel: BaseViewModel {
-    private let id: String
+    private(set) var id: String
     var chartModel = StockChartModel(data: [])
     var chartDataDidGet: PassthroughSubject<StockChartModel, Never> = .init()
 
     init(id: String, appDependencies: AppDependencies) {
         self.id = id
         super.init(appDependencies: appDependencies)
+    }
+
+    func start() {
+        fetchStockChart()
+    }
+
+    func setStockID(id: String) {
+        self.id = id
     }
 }
 
@@ -50,6 +58,7 @@ extension StockChartViewModel {
 
 extension StockChartViewModel {
     func fetchStockChart() {
+        isLoading.send(true)
         apiManager.fetchStockChart(stockID: id) { [weak self] result in
             switch result {
             case let .success(model):
@@ -58,6 +67,7 @@ extension StockChartViewModel {
             case .failure:
                 break
             }
+            self?.isLoading.send(false)
         }
     }
 }

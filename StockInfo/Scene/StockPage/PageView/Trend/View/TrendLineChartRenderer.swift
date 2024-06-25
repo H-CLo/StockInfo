@@ -9,5 +9,5 @@ import Foundation
 import DGCharts
 
 class TrendLineChartRenderer: LineChartRenderer {
-
+    
 }

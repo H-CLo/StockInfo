@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol StockPageViewProtocol {
+    func setStockID(id: String)
+    func reload()
+}
+
 protocol StockPageViewControllerDelegate: AnyObject {
     /// 當 pageViewController 切換頁數時，設定 pageControl 的頁數
     ///
@@ -38,6 +43,15 @@ class StockPageViewController: UIPageViewController {
     func scrollTo(index: Int) {
         guard let vc = viewControllerList[safe: index] else { return }
         setViewControllers([vc], direction: .forward, animated: false)
+        reloadCurrentView()
+    }
+
+    func updateStockID(id: String) {
+        viewControllerList.forEach { ($0 as? StockPageViewProtocol)?.setStockID(id: id) }
+    }
+
+    func reloadCurrentView() {
+        (viewControllers?.first as? StockPageViewProtocol)?.reload()
     }
 }
 
@@ -94,5 +108,6 @@ extension StockPageViewController: UIPageViewControllerDelegate {
 
         // 設定 RootViewController 上 PageControl 的頁數
         stockPageViewDelegate?.pageViewController(self, didUpdatePageIndex: currentIndex)
+        reloadCurrentView()
     }
 }

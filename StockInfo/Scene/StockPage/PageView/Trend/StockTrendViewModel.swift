@@ -5,8 +5,8 @@
 //  Created by Lo on 2024/6/23.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 protocol StockTrendViewModelSpec {
     var trendModel: StockTrendModel { get }
@@ -15,7 +15,7 @@ protocol StockTrendViewModelSpec {
 }
 
 class StockTrendViewModel: BaseViewModel, StockTrendViewModelSpec {
-    private let id: String
+    private(set) var id: String
     var watchListStock: WatchListStock?
     var trendModel = StockTrendModel(dict: [:])
     var trendDataDidGet: PassthroughSubject<StockTrendModel, Never> = .init()
@@ -27,6 +27,10 @@ class StockTrendViewModel: BaseViewModel, StockTrendViewModelSpec {
 
     func start() {
         fetchWatchListStocks()
+    }
+
+    func setStockID(id: String) {
+        self.id = id
     }
 }
 
@@ -47,13 +51,13 @@ extension StockTrendViewModel {
 
     func fetchStockTrend() {
         isLoading.send(true)
-        apiManager.fetchStockTrend(stockID: id) {[weak self] result in
+        apiManager.fetchStockTrend(stockID: id) { [weak self] result in
             switch result {
-            case .success(let models):
+            case let .success(models):
                 let model = StockTrendModel(dict: models)
                 self?.trendModel = model
                 self?.trendDataDidGet.send(model)
-            case .failure(_):
+            case .failure:
                 break
             }
             self?.isLoading.send(false)
