@@ -78,6 +78,8 @@
 		07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */; };
 		07DB412D2C29F3DF00BF4BAE /* Double+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412C2C29F3DF00BF4BAE /* Double+.swift */; };
 		07DB412F2C2A9FCB00BF4BAE /* StockListSorter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */; };
+		07DB41322C2AAAE900BF4BAE /* AppDirectoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */; };
+		07DB41342C2AAB8600BF4BAE /* ApiCacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +171,8 @@
 		07DB41282C29DE7F00BF4BAE /* LineTypeAttr.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineTypeAttr.swift; sourceTree = "<group>"; };
 		07DB412C2C29F3DF00BF4BAE /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		07DB412E2C2A9FCB00BF4BAE /* StockListSorter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockListSorter.swift; sourceTree = "<group>"; };
+		07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDirectoryProtocol.swift; sourceTree = "<group>"; };
+		07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCacheRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +280,7 @@
 		07CC01882C24961600AF9409 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41302C2AAA8400BF4BAE /* CacheRepository */,
 				07CC01C42C2576CD00AF9409 /* Protocols */,
 				07CC01BE2C25650200AF9409 /* UserManager */,
 				07CC01AF2C25270900AF9409 /* NetworkManager */,
@@ -565,6 +570,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		07DB41302C2AAA8400BF4BAE /* CacheRepository */ = {
+			isa = PBXGroup;
+			children = (
+				07DB41312C2AAAE900BF4BAE /* AppDirectoryProtocol.swift */,
+				07DB41332C2AAB8600BF4BAE /* ApiCacheRepository.swift */,
+			);
+			path = CacheRepository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -726,6 +740,7 @@
 				07CC02032C27F07200AF9409 /* StockInfoCoordinator.swift in Sources */,
 				07CC01912C249A3B00AF9409 /* LoginCoordinator.swift in Sources */,
 				07CC021D2C296A6E00AF9409 /* StockChartViewController.swift in Sources */,
+				07DB41322C2AAAE900BF4BAE /* AppDirectoryProtocol.swift in Sources */,
 				07CC01A32C25152100AF9409 /* SColor.swift in Sources */,
 				07CC019E2C24A0EB00AF9409 /* LoginInputTextView.swift in Sources */,
 				07CC01C02C25651100AF9409 /* UserManager.swift in Sources */,
@@ -755,6 +770,7 @@
 				07CC02072C27F09300AF9409 /* StockInfoViewModel.swift in Sources */,
 				07CC01C92C25788B00AF9409 /* HomeCoordinator.swift in Sources */,
 				07DB41292C29DE7F00BF4BAE /* LineTypeAttr.swift in Sources */,
+				07DB41342C2AAB8600BF4BAE /* ApiCacheRepository.swift in Sources */,
 				07CC01C62C2576E400AF9409 /* ProgressHUDable.swift in Sources */,
 				07CC01992C249BF300AF9409 /* BaseViewController.swift in Sources */,
 				07CC01F62C27527700AF9409 /* StockListInfo.swift in Sources */,

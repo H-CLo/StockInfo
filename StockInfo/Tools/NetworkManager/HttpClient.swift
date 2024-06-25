@@ -47,6 +47,16 @@ class HttpClient: HttpClientProtocol {
     ///   - body: Http request body
     ///   - completion: (Result<Response, Error>) -> Void
     private static func request<T: TargetType, Body: Encodable, Response: Decodable>(target: T, body: Body, completion: @escaping (Result<Response, Error>) -> Void) {
+        // Use cache api
+        let cache = ApiCacheRepository(target: target)
+        if let cacheResponse: Response = cache.load() {
+            debugPrint("Api \(target) use cache response")
+            completion(.success(cacheResponse))
+            return
+        }
+
+        // Start api flow
+
         let urlStr = target.baseURL + target.path
         let method = HTTPMethod(rawValue: target.method.rawValue)
         let body = (target.method == .post) ? body : nil
@@ -68,10 +78,13 @@ class HttpClient: HttpClientProtocol {
                           case let .success(data):
                               do {
                                   if let data = data {
+                                      // Print json
                                       if let prettyJSON = data.prettyPrintedJSONString {
-                                          //debugPrint("prettyJSON = \(prettyJSON)")
+                                          // debugPrint("prettyJSON = \(prettyJSON)")
                                       }
-
+                                      // Cache
+                                      cache.save(data)
+                                      // Response
                                       let model = try JSONDecoder().decode(Response.self, from: data)
                                       completion(.success(model))
                                   } else {
