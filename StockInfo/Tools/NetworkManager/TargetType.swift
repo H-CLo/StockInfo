@@ -88,8 +88,7 @@ extension Target {
         case .login:
             break
         default:
-            // let accessToken = UserManager().loadToken()
-            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5Mzg2NDAyLCJpYXQiOjE3MTkzMDAwMDIsImp0aSI6IjQ0OGRjYTVkODQwMjRkYzU4MDMwMjI3YzA4ZWQxODNlIiwidXNlcl9pZCI6OH0.okmT7kOdNBWtRYWx7AZ7eiQk66TMfogYKV1ZqaUAo3s"
+            let token = UserManager().loadToken()
             headers["Authorization"] = "Bearer \(token)"
         }
         return headers
