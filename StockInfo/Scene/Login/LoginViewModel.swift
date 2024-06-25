@@ -14,18 +14,16 @@ protocol LoginViewModelDelegate: AnyObject {
 
 protocol LoginViewModelSpec {
     // Output
-    var loginError: PassthroughSubject<Error, Never> { get }
     func login(account: String, password: String)
 }
 
 class LoginViewModel: BaseViewModel, LoginViewModelSpec {
     weak var delegate: LoginViewModelDelegate?
-    var loginError: PassthroughSubject<any Error, Never> = .init()
+    var loginDidSet: PassthroughSubject<Result<Void, Error>, Never> = .init()
 }
 
 extension LoginViewModel {
     func login(account: String, password: String) {
-        // Loading
         isLoading.send(true)
 
         apiManager.login(account: account, password: password) { [weak self] result in
@@ -33,8 +31,9 @@ extension LoginViewModel {
             case let .success(model):
                 debugPrint("Access = \(model.access)")
                 self?.userManager.save(accessToken: model.access)
+                self?.delegate?.loginSuccess()
             case let .failure(error):
-                self?.loginError.send(error)
+                self?.apiErrorDidGet.send(error)
             }
             self?.isLoading.send(false)
         }

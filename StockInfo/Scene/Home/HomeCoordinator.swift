@@ -19,6 +19,14 @@ class HomeCoordinator: Coordinator {
     }
 
     override func start() {
+        // Flow
+        // Login success -> display tabBar
+        let loginCoordinator = makeLoginCoordinator()
+        add(child: loginCoordinator)
+        loginCoordinator.start()
+    }
+
+    func startTabBar() {
         let items: [TabItem] = TabItem.allCases
         let dataSource = items.map { $0.makeCoordinator(appDependencies: appDependencies) }
         let viewControllers = dataSource.map { $0.navigationController }
@@ -100,9 +108,17 @@ private extension HomeCoordinator {
 // MARK: - Login Coordinator
 
 private extension HomeCoordinator {
-    func makeLoginCoordinator() -> (UINavigationController, coordinator: Coordinating) {
-        let coordinator = LoginCoordinator(navigationController: navigationController, appDependencies: appDependencies)
-        return (navigationController, coordinator)
+    func makeLoginCoordinator() -> Coordinator {
+        let coordinator = LoginCoordinator(rootViewController: homeTabBarController, appDependencies: appDependencies)
+        coordinator.delegate = self
+        return coordinator
+    }
+}
+
+extension HomeCoordinator: LoginCoordinatorDelegate {
+    func loginSuccess() {
+        stopChildren()
+        startTabBar()
     }
 }
 

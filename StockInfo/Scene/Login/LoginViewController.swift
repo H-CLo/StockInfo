@@ -5,19 +5,14 @@
 //  Created by Lo on 2024/6/21.
 //
 
-import UIKit
-import SnapKit
 import Combine
-
-protocol LoginViewControllerDelegate: AnyObject {
-    func loginSuccess()
-}
+import SnapKit
+import UIKit
 
 class LoginViewController: BaseViewController<LoginViewModel> {
     // MARK: - Property
 
     private var cancelBag = Set<AnyCancellable>()
-    weak var delegate: LoginViewControllerDelegate?
 
     // MARK: - UI Component
 
@@ -77,6 +72,7 @@ class LoginViewController: BaseViewController<LoginViewModel> {
     // TODO: - Layout support
     let savePasswordSwitch: UISwitch = {
         let uiSwitch = UISwitch()
+        uiSwitch.onTintColor = SColor.yellowColor
         return uiSwitch
     }()
 
@@ -120,13 +116,13 @@ private extension LoginViewController {
             self.isLoading = isLoading
         }.store(in: &cancelBag)
 
-        viewModel.loginError.sink {[weak self] error in
-            self?.showLoginFail(error: error)
+        viewModel.apiErrorDidGet.sink { error in
+            self.showLoginFail(error: error)
         }.store(in: &cancelBag)
     }
 
     @objc
-    func textFieldTextDidChanged(_ textField: UITextField) {
+    func textFieldTextDidChanged(_: UITextField) {
         let isEnable1 = accountTextField.textField.text?.count ?? 0 > 0
         let isEnable2 = passwordTextField.textField.text?.count ?? 0 > 0
         loginButton.isEnabled = isEnable1 && isEnable2
@@ -139,7 +135,7 @@ private extension LoginViewController {
             alert.dismiss(animated: true)
         }
         alert.addAction(action)
-        self.present(alert, animated: true)
+        present(alert, animated: true)
     }
 }
 

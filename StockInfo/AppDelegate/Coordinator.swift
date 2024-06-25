@@ -19,6 +19,10 @@ extension Coordinating {
         childCoordinators.append(coordinator)
         debugPrint("childCoordinators = \(childCoordinators)")
     }
+
+    func stopChildren() {
+        childCoordinators.removeAll()
+    }
 }
 
 class Coordinator: Coordinating {

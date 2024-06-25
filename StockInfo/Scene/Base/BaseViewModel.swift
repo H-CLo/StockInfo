@@ -14,6 +14,7 @@ class BaseViewModel {
     let userManager: UserManager
 
     var isLoading: PassthroughSubject<Bool, Never> = .init()
+    var apiErrorDidGet: PassthroughSubject<Error, Never> = .init()
 
     init(appDependencies: AppDependencies) {
         self.appDependencies = appDependencies
