@@ -51,7 +51,16 @@ class StockListViewController: BaseViewController<StockListViewModel> {
         super.viewDidLoad()
         setupUI()
         bind()
-        viewModel.fetchStockBaseInfo()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.start()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        viewModel.cancelPolling()
     }
 }
 

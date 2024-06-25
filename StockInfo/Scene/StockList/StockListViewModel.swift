@@ -39,19 +39,30 @@ final class StockListViewModel: BaseViewModel, StockListViewModelSpec {
     private(set) var stockListInfos: [StockListInfo] = []
     private(set) var sortColumnType: StockListColumnType?
     private(set) var sortType: SortType = .none
+    private(set) var timerBag: Cancellable?
 
     var watchListsDidSet: PassthroughSubject<[WatchList], Never> = .init()
     var watchListStocksDidSet: PassthroughSubject<Void, Never> = .init()
+
+    deinit {
+        cancelPolling()
+    }
+
+    func start() {
+        cancelPolling()
+        fetchStockBaseInfo()
+    }
 }
 
 // MARK: - Spec
 
 extension StockListViewModel {
     func changePageItem(_ item: PageItemProtocol) {
-        // cancel polling
         guard let index = watchLists.firstIndex(where: { $0.order == item.index && $0.display_name == item.title }) else { return }
         watchListIndex = index
-        fetchWatchListStocksByIndex()
+        sortColumnType = nil
+        sortType = .none
+        startWatchListStocksByIndex()
     }
 
     func sortItems(columnType: StockListColumnType, sortType: SortType) {
@@ -86,7 +97,7 @@ extension StockListViewModel {
                 self?.stockBaseInfos = Set(models)
                 self?.fetchWatchListAll()
             case .failure:
-                break
+                self?.isLoading.send(false)
             }
         }
     }
@@ -98,22 +109,15 @@ extension StockListViewModel {
                 self?.watchLists = models
                 self?.watchListsDidSet.send(models)
                 // 預設是第0筆為顯示，抓第0筆的 stocks information
-                self?.fetchWatchListStocksByIndex()
+                self?.startWatchListStocksByIndex()
             case .failure:
-                break
+                self?.isLoading.send(false)
             }
         }
     }
 
-    func fetchWatchListStocksByIndex() {
-        isLoading.send(true)
-        let index = watchListIndex
-        guard let ids = watchLists[safe: index]?.stock_ids else { return }
-        fetchWatchListStocks(stockIDs: ids)
-        // Start polling
-    }
-
     func fetchWatchListStocks(stockIDs: [String]) {
+        isLoading.send(true)
         apiManager.fetchWatchListStocks(stockIDs: stockIDs) { [weak self] result in
             switch result {
             case let .success(models):
@@ -127,6 +131,33 @@ extension StockListViewModel {
         }
     }
 
+    func startWatchListStocksByIndex() {
+        cancelPolling()
+        // first update
+        fetchWatchListStocksByIndex()
+        // polling
+        pollingWatchListStocksByIndex()
+    }
+
+    func pollingWatchListStocksByIndex() {
+        timerBag = Timer.publish(every: 5, on: .current, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.fetchWatchListStocksByIndex()
+            }
+    }
+
+    func cancelPolling() {
+        timerBag?.cancel()
+        timerBag = nil
+    }
+
+    func fetchWatchListStocksByIndex() {
+        let index = watchListIndex
+        guard let ids = watchLists[safe: index]?.stock_ids else { return }
+        fetchWatchListStocks(stockIDs: ids)
+    }
+
     func constructStockListInfos(models: [String: WatchListStock]) {
         var infos = [StockListInfo]()
         for model in models {
@@ -135,5 +166,9 @@ extension StockListViewModel {
             infos.append(info)
         }
         stockListInfos = infos
+        // 進行排序
+        if let columnType = sortColumnType {
+            sortItems(columnType: columnType, sortType: sortType)
+        }
     }
 }
