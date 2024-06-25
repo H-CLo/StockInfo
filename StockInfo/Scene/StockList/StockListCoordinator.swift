@@ -12,6 +12,7 @@ final class StockListCoordinator: Coordinator {
     override func start() {
         let stockListViewController = StockListViewController(viewModel: StockListViewModel(appDependencies: appDependencies))
         stockListViewController.delegate = self
+        stockListViewController.title = LocalizeTool.string("自選股")
         navigationController.setViewControllers([stockListViewController], animated: false)
     }
 }

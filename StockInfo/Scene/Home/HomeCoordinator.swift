@@ -81,10 +81,18 @@ private extension HomeCoordinator {
 
         // TODO: - Other views
         func makeCoordinator(appDependencies: AppDependencies) -> (navigationController: UINavigationController, coordinator: Coordinator) {
-            let navigationController = UINavigationController()
-            let coordinator = StockListCoordinator(navigationController: navigationController, appDependencies: appDependencies)
-            navigationController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: imageName), tag: self.rawValue)
-            return (navigationController, coordinator)
+            switch self {
+            case .screen, .society, .news, .more:
+                let navigationController = UINavigationController()
+                let coordinator = Coordinator(navigationController: navigationController, appDependencies: appDependencies)
+                navigationController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: imageName), tag: self.rawValue)
+                return (navigationController, coordinator)
+            case .watchlist:
+                let navigationController = UINavigationController()
+                let coordinator = StockListCoordinator(navigationController: navigationController, appDependencies: appDependencies)
+                navigationController.tabBarItem = UITabBarItem(title: title, image: UIImage(named: imageName), tag: self.rawValue)
+                return (navigationController, coordinator)
+            }
         }
     }
 }
