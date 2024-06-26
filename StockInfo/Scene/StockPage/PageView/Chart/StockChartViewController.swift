@@ -47,8 +47,8 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
         return label
     }()
 
-    lazy var chartView: CandleStickChartView = {
-        let charView = CandleStickChartView(frame: .zero)
+    lazy var chartView: CustomCandleStickChartView = {
+        let charView = CustomCandleStickChartView(frame: .zero)
         charView.delegate = self
         return charView
     }()
@@ -58,6 +58,7 @@ class StockChartViewController: BaseViewController<StockChartViewModel> {
         setupLayout()
         setupUI()
         bind()
+        setupChartConfig()
         viewModel.start()
     }
 }
@@ -153,6 +154,21 @@ extension StockChartViewController {
 }
 
 extension StockChartViewController {
+    func setupChartConfig() {
+        // 調整 x軸 Label
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        chartView.xAxis.labelTextColor = .white
+        // 左側 Y軸 Label 隱藏
+        chartView.leftAxis.drawLabelsEnabled = false
+        // 調整右側Y軸 Label
+        chartView.rightAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        chartView.rightAxis.labelTextColor = .white
+        // Disable gestures
+        chartView.doubleTapToZoomEnabled = false
+        chartView.highlightPerTapEnabled = false
+    }
+
     func setupCharts(model: StockChartModel) {
         let yVals = (0 ..< model.data.count).map { i -> CandleChartDataEntry in
             let chartData = model.data[i]
@@ -179,64 +195,25 @@ extension StockChartViewController {
         set.highlightColor = SColor.yellowColor1
         set.highlightLineWidth = 1
 
-        // 調整 x軸 Label
-        chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        chartView.xAxis.labelTextColor = .white
-        let xValueFormatter = ChartAxisFormatter(data: model.data)
+        // highlight 資料顯示
+        chartView.chartDatas = model.data
+        // x軸 資料顯示
+        let xValueFormatter = CustomChartAxisFormatter(data: model.data)
         chartView.xAxis.valueFormatter = xValueFormatter
 
-        // 左側 Y軸 Label 隱藏
-        chartView.leftAxis.drawLabelsEnabled = false
-        // 調整右側Y軸 Label
-        chartView.rightAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        chartView.rightAxis.labelTextColor = .white
-        // Disable double tapped
-        chartView.doubleTapToZoomEnabled = false
+        // TODO: Custom renderer
+        let customChartRenderer = CustomChartRenderer(dataProvider: chartView, animator: chartView.chartAnimator, viewPortHandler: chartView.viewPortHandler)
+        chartView.renderer = customChartRenderer
 
         let data = CandleChartData(dataSet: set)
         chartView.data = data
     }
 }
 
-extension StockChartViewController {
-    class ChartAxisFormatter: IndexAxisValueFormatter {
-        var chartDatas: [StockChartModel.ChartData] = []
-
-        private lazy var dateFormatterGet: DateFormatter = {
-            // set up date formatter using locale
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(identifier: "Asia/Taipei")
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            return dateFormatter
-        }()
-
-        private lazy var dateFormatter: DateFormatter = {
-            // set up date formatter using locale
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(identifier: "Asia/Taipei")
-            dateFormatter.dateFormat = "MM/dd"
-            return dateFormatter
-        }()
-
-        convenience init(data: [StockChartModel.ChartData]) {
-            self.init()
-            chartDatas = data
-        }
-
-        override func stringForValue(_ value: Double, axis _: AxisBase?) -> String {
-            let index = Int(value)
-            guard index < chartDatas.count,
-                  let date = dateFormatterGet.date(from: chartDatas[index].date) else { return "" }
-            return dateFormatter.string(from: date)
-        }
-    }
-}
-
 // MARK: - ChartViewDeletage
 
 extension StockChartViewController: ChartViewDelegate {
-    func chartValueSelected(_: ChartViewBase, entry: ChartDataEntry, highlight _: Highlight) {
+    func chartValueSelected(_: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         displayLineTypeLabel(index: Int(entry.x))
     }
 
