@@ -87,6 +87,7 @@
 		07DB41402C2B3DA000BF4BAE /* CustomChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB413F2C2B3DA000BF4BAE /* CustomChartRenderer.swift */; };
 		07DB41422C2C25FA00BF4BAE /* CustomCandleStickChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41412C2C25FA00BF4BAE /* CustomCandleStickChartView.swift */; };
 		07DB41442C2C2DF600BF4BAE /* CustomChartAxisFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41432C2C2DF600BF4BAE /* CustomChartAxisFormatter.swift */; };
+		07DB41462C2C2F9500BF4BAE /* CustomLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DB41452C2C2F9500BF4BAE /* CustomLineChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -187,6 +188,7 @@
 		07DB413F2C2B3DA000BF4BAE /* CustomChartRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartRenderer.swift; sourceTree = "<group>"; };
 		07DB41412C2C25FA00BF4BAE /* CustomCandleStickChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCandleStickChartView.swift; sourceTree = "<group>"; };
 		07DB41432C2C2DF600BF4BAE /* CustomChartAxisFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomChartAxisFormatter.swift; sourceTree = "<group>"; };
+		07DB41452C2C2F9500BF4BAE /* CustomLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLineChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -609,6 +611,7 @@
 		07DB41382C2B13D100BF4BAE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				07DB41452C2C2F9500BF4BAE /* CustomLineChartView.swift */,
 				07DB413B2C2B145800BF4BAE /* TrendXAxisValueFormatter.swift */,
 				07DB413D2C2B14A200BF4BAE /* TrendLeftAxisRenderer.swift */,
 				07DB41392C2B13EE00BF4BAE /* TrendLineChartRenderer.swift */,
@@ -800,6 +803,7 @@
 				07DB41252C29DC7500BF4BAE /* AdaptableSizeButton.swift in Sources */,
 				07CC01DD2C26DF7300AF9409 /* PageListCollectionViewCell.swift in Sources */,
 				07CC02182C2866C000AF9409 /* String+.swift in Sources */,
+				07DB41462C2C2F9500BF4BAE /* CustomLineChartView.swift in Sources */,
 				07CC019B2C249BFE00AF9409 /* BaseViewModel.swift in Sources */,
 				07CC01B22C25270900AF9409 /* NetworkManager.swift in Sources */,
 				07CC01D92C26DDFD00AF9409 /* PageListViewModel.swift in Sources */,

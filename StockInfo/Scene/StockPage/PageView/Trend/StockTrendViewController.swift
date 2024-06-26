@@ -15,8 +15,8 @@ final class StockTrendViewController: BaseViewController<StockTrendViewModel> {
 
     private var cancelBags = Set<AnyCancellable>()
 
-    lazy var chartView: LineChartView = {
-        let charView = LineChartView(frame: .zero)
+    lazy var chartView: CustomLineChartView = {
+        let charView = CustomLineChartView(frame: .zero)
         charView.delegate = self
         return charView
     }()
@@ -63,7 +63,8 @@ extension StockTrendViewController {
     func setupUI() {
         view.addSubview(chartView)
         chartView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.leading.trailing.top.equalToSuperview()
+            $0.height.equalTo(290)
         }
     }
 }
@@ -76,6 +77,20 @@ extension StockTrendViewController {
         chartView.dragEnabled = false
         chartView.setScaleEnabled(false)
         chartView.pinchZoomEnabled = false
+        chartView.highlightPerTapEnabled = false
+        chartView.highlightPerDragEnabled = true
+
+        // X 軸
+        chartView.xAxis.drawLabelsEnabled = true
+        chartView.xAxis.labelPosition = .bottom
+        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        chartView.xAxis.labelTextColor = .white
+
+        // Y 軸
+        chartView.rightAxis.drawLabelsEnabled = false
+        chartView.leftAxis.labelPosition = .outsideChart
+        chartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
+        chartView.leftAxis.labelTextColor = .white
     }
 
     func setupCharts(_ model: StockTrendModel) {
@@ -96,16 +111,8 @@ extension StockTrendViewController {
         // 不顯示點的資料
         dataSet.drawValuesEnabled = false
 
-        chartView.xAxis.drawLabelsEnabled = true
-        chartView.xAxis.labelPosition = .bottom
-        chartView.xAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        chartView.xAxis.labelTextColor = .white
+        chartView.refPrice = viewModel.watchListStock?.refPrice.doubleValue ?? 0
         chartView.xAxis.valueFormatter = TrendXAxisValueFormatter(data: model.trends)
-
-        chartView.rightAxis.drawLabelsEnabled = false
-        chartView.leftAxis.labelPosition = .outsideChart
-        chartView.leftAxis.labelFont = UIFont.systemFont(ofSize: 12)
-        chartView.leftAxis.labelTextColor = .white
         let yAxisRenderer = TrendLeftAxisRenderer(viewPortHandler: chartView.leftYAxisRenderer.viewPortHandler,
                                                   axis: chartView.leftYAxisRenderer.axis,
                                                   transformer: chartView.leftYAxisRenderer.transformer)
