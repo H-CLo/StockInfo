@@ -2,6 +2,10 @@
 
 > This is a practice iOS project displaying stock information project with Coordinator pattern, MVVM structure.
 
+|  登入   | 自選股 | 分時走勢 | K線 |
+|  ----  | ----  | ----  | ----  |
+| ![](https://github.com/H-CLo/StockInfo/assets/13503418/bd8c2027-862f-4b21-9f5d-75ecd8e26b85) | ![](https://github.com/H-CLo/StockInfo/assets/13503418/c82e776e-9c82-4ea1-acee-b9a54fa42b8b) | ![](https://github.com/H-CLo/StockInfo/assets/13503418/3dfe1e1e-dc4c-48b5-9b32-4d59756ff50b) | ![](https://github.com/H-CLo/StockInfo/assets/13503418/48080b6a-7bbd-4ac9-9940-2a910af673fc) |
+
 # Requirement
 - Xcode 15.x
 - Swift 5.x.x
